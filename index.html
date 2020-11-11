@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>OutAuto</title>
+	<style>
+
+		.main-container {
+			background: #fafafa;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			margin: 25px 50px;
+		}
+
+		.menu-items {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+			background: #ffc800;
+			height: 50px;
+		}
+
+		.menu-items > a {
+			text-decoration: none;
+			margin: 0px 5px;
+			color: white;
+		}
+
+		.filter-and-content {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.filters {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+			background: #ffff6b;
+			height: 250px;
+			width: 150px;
+		}
+
+		.filters > a {
+			text-decoration: none;
+			color: black;
+		}
+
+		.filter {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+			height: 40px;
+		}
+
+		.filter-label {
+			font-size: 13px;
+		}
+
+		.filter > input {
+			background-color: lightgrey;
+			width: 100px;
+			border: 1px solid white;
+			border-radius: 5px;
+		}
+
+		.content {
+			margin: 5px 10px;
+		}
+
+		.car {
+			display: flex;
+			flex-direction: row;
+			margin: 10px 0;
+		}
+
+		.car > img {
+			width: 200px;
+			height: 140px;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="main-container">
+		<div class="menu-items">
+			<a href="http://google.com">google</a>
+			<a href="http://facebook.com">facebook</a>
+			<a href="http://twitter.com">twitter</a>
+			<a href="http://youtube.com">youtube</a>
+		</div>
+
+		<div class="filter-and-content">
+			<div class="filters">
+				<div class="filter">
+					<div class="filter-label">მოდელი:</div>
+					<input type="text" name="carModel">
+				</div>
+
+				<div class="filter">
+					<div class="filter-label">წელი &gt;:</div>
+					<input type="number" name="carModel">
+				</div>
+
+				<div class="filter">
+					<div class="filter-label">წელი &lt;:</div>
+					<input type="number" name="carModel">
+				</div>
+
+				<div class="filter">
+					<div class="filter-label">გადაცემათა კოლოფი:</div>
+					<input type="text" name="carModel">
+				</div>
+			</div>
+
+			<div class="content">
+				<div class="car">
+					<img src="https://bringatrailer.com/wp-content/uploads/2018/07/1990_bmw_325ic_hartge_h35_15312399737dff9f98764da15085606_10154762629479201_7529277224418374730_n.jpg?fit=940%2C627">
+					<div>
+						bmw e30
+					</div>
+				</div>
+
+				<div class="car">
+					<img src="https://pictures.dealer.com/j/justmercedes/1458/a8b667f5a9540ba18440c079c2663e2dx.jpg">
+					<div>
+						S class 2020
+					</div>
+				</div>
+
+				<div class="car">
+					<img src="https://cnet2.cbsistatic.com/img/IcPcR4GvpIj62M19-X9e7rzeQ64=/1200x675/2012/05/08/8a711731-bb76-11e2-8a8e-0291187978f3/35266802_OVR.JPG">
+					<div>
+						პრიუსი კარგ მდგომარეობაში
+					</div>
+				</div>
+
+				<div class="car">
+					<img src="https://picture1.goo-net.com/7000707591/30160222/J/70007075913016022200100.jpg">
+					<div>
+						honda fit 2005 ფიტი
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</body>
+
+</html>
