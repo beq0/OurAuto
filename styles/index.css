@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&family=Raleway:wght@300;400;500&display=swap");
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+
+.main-container {
+  background: #fafafa;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background: #ffc800;
+  height: 50px;
+}
+.menu-items > div {
+  padding: 10px;
+  transition: 0.5s;
+  border: 0px solid transparent;
+  border-radius: 10px;
+}
+.menu-items > div:hover {
+  background: #e6b500;
+}
+.menu-items > div:hover > a {
+  font-size: 22px;
+}
+.menu-items > div > a {
+  text-decoration: none;
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  transition: 0.5s;
+}
+
+.filter-and-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: #ffff6b;
+  height: 500px;
+  width: 150px;
+}
+.filters > a {
+  text-decoration: none;
+  color: black;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+}
+.filter > input {
+  background-color: lightgrey;
+  width: 100px;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.filter-label {
+  font-size: 13px;
+}
+
+.content {
+  margin: 5px 10px;
+}
+
+.car {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 800px;
+  margin: 10px 0;
+  font-family: "Quicksand", sans-serif;
+}
+.car > img {
+  width: 200px;
+  height: 140px;
+}
+
+.car-info {
+  margin-left: 10px;
+}
+
+.car-main-info {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.car-price {
+  color: #f0a65a;
+}
+
+.car-general-info {
+  font-size: 13px;
+  color: grey;
+}
+
+/*# sourceMappingURL=index.css.map */
