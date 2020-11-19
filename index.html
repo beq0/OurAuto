@@ -6,8 +6,26 @@
 	<link rel="stylesheet" href="styles/index.css">
 </head>
 
-<body class="preload" onload="removePreload()">
+<body class="preload">
 	<div class="main-container">
+		<div class="header-info">
+			<div id="logo">
+				MyAuto
+			</div>
+			
+			<div class="user-info">
+				<div id="main-user" class="user">
+					სახელი გვარი
+				</div>
+				
+				<div>
+					<button id="logout-button">
+						გასვლა
+					</button>
+				</div>
+			</div>
+		</div>
+
 		<div class="menu-items">
 			<div>
 				<a href="http://google.com" target="_blank">მთავარი</a>
@@ -30,177 +48,38 @@
 			<div class="filters">
 				<div class="filter">
 					<div class="filter-label">მოდელი:</div>
-					<input type="text" name="carModel">
+					<input type="text" id="filter-car-model">
 				</div>
 
 				<div class="filter">
-					<div class="filter-label">წელი &gt;:</div>
-					<input type="number" name="carModel">
+					<div class="filter-label">საწყისი წელი:</div>
+					<input type="number" id="filter-car-year-lower">
 				</div>
 
 				<div class="filter">
-					<div class="filter-label">წელი &lt;:</div>
-					<input type="number" name="carModel">
+					<div class="filter-label">საბოლოო წელი:</div>
+					<input type="number" id="filter-car-year-upper">
+				</div>
+
+				<div class="filter">
+					<div class="filter-label">ძრავი:</div>
+					<input type="number" id="filter-car-motor">
 				</div>
 
 				<div class="filter">
 					<div class="filter-label">ტრანსმისია:</div>
-					<input type="text" name="carModel">
+					<input type="text" id="filter-car-transmission">
+				</div>
+
+				<div id="filter-button">
+					<img src="https://icon-library.com/images/white-search-icon-transparent-background/white-search-icon-transparent-background-4.jpg"
+						width="17px" height="17px">
+					<div>გაფილტრვა</div>
 				</div>
 			</div>
 
-			<div class="content">
-				<div class="car">
-					<img src="https://bringatrailer.com/wp-content/uploads/2018/07/1990_bmw_325ic_hartge_h35_15312399737dff9f98764da15085606_10154762629479201_7529277224418374730_n.jpg?fit=940%2C627">
-
-					<div class="car-info">
-						<div class="car-main-info">
-							<div class="car-price">
-								<span>20.000</span> ₾
-							</div>
-
-							<div>
-								<span>bmw e30</span>
-							</div>
-						</div>
-						
-						<div class="car-general-info">
-							<div>
-								წელი: <span>1995</span>
-							</div>
-
-							<div>
-								ძრავი: <span>2.5</span>
-							</div>
-						
-							<div>
-								ტრანსმისია: <span>მექანიკა</span>
-							</div>
-
-							<div>
-								გარბენი: <span>155,000</span> კმ
-							</div>
-
-							<div>
-								ტექ. დათვალიერება: <span>არა</span>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="car">
-					<img src="https://pictures.dealer.com/j/justmercedes/1458/a8b667f5a9540ba18440c079c2663e2dx.jpg">
-
-					<div class="car-info">
-						<div class="car-main-info">
-							<div class="car-price">
-								<span>100,000</span> ₾
-							</div>
-
-							<div>
-								<span>S class 2020</span>
-							</div>
-						</div>
-						
-						<div class="car-general-info">
-							<div>
-								წელი: <span>2020</span>
-							</div>
-
-							<div>
-								ძრავი: <span>5.5</span>
-							</div>
-						
-							<div>
-								ტრანსმისია: <span>ავტომატიკა</span>
-							</div>
-
-							<div>
-								გარბენი: <span>155,000</span> კმ
-							</div>
-
-							<div>
-								ტექ. დათვალიერება: <span>კი</span>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="car">
-					<img src="https://cnet2.cbsistatic.com/img/IcPcR4GvpIj62M19-X9e7rzeQ64=/1200x675/2012/05/08/8a711731-bb76-11e2-8a8e-0291187978f3/35266802_OVR.JPG">
-
-					<div class="car-info">
-						<div class="car-main-info">
-							<div class="car-price">
-								<span>13,000</span> ₾
-							</div>
-
-							<div>
-								<span>პრიუსი კარგ მდგომარეობაში</span>
-							</div>
-						</div>
-						
-						<div class="car-general-info">
-							<div>
-								წელი: <span>2012</span>
-							</div>
-
-							<div>
-								ძრავი: <span>1.3</span>
-							</div>
-						
-							<div>
-								ტრანსმისია: <span>ავტომატიკა</span>
-							</div>
-
-							<div>
-								გარბენი: <span>0</span> კმ
-							</div>
-
-							<div>
-								ტექ. დათვალიერება: <span>კი</span>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="car">
-					<img src="https://picture1.goo-net.com/7000707591/30160222/J/70007075913016022200100.jpg">
-
-					<div class="car-info">
-						<div class="car-main-info">
-							<div class="car-price">
-								<span>7,000</span> ₾
-							</div>
-
-							<div>
-								<span>honda fit 2005 ფიტი</span>
-							</div>
-						</div>
-						
-						<div class="car-general-info">
-							<div>
-								წელი: <span>205</span>
-							</div>
-
-							<div>
-								ძრავი: <span>1.8</span>
-							</div>
-						
-							<div>
-								ტრანსმისია: <span>ავტომატიკა</span>
-							</div>
-
-							<div>
-								გარბენი: <span>240,000</span> კმ
-							</div>
-
-							<div>
-								ტექ. დათვალიერება: <span>კი</span>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div id="content">
+				
 			</div>
 		</div>
 		
