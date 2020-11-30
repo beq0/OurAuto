@@ -3,6 +3,8 @@ let userName = 'ბექა';
 let userFamilyName = 'გუგულაშვილი';
 let userPhoneNumber = '+995555555555';
 
+let burgerMenuShown = false, avatarShown = false;
+
 let cars = [
     {
         image: 'https://bringatrailer.com/wp-content/uploads/2018/07/1990_bmw_325ic_hartge_h35_15312399737dff9f98764da15085606_10154762629479201_7529277224418374730_n.jpg?fit=940%2C627',
@@ -49,30 +51,34 @@ let cars = [
 window.onload = () => {
     setInnerHTML("content", getcarsHTML(null));
     removePreload();
+    
+    document.getElementById("logo").addEventListener('click', () => {
+        setInnerHTML("content", getcarsHTML(null));
+    });
+    
+    document.getElementById("main-user").addEventListener('click', () => {
+        setInnerHTML("content", getUserInfoHTML(null));
+    });
+    
+    document.getElementById("avatar-user").addEventListener('click', () => {
+        setInnerHTML("content", getUserInfoHTML(null));
+    });
+    
+    document.getElementById("filter-button").addEventListener('click', () => {
+        filter = {
+            model: getValueById('filter-car-model'),
+            yearLower: parseInt(getValueById('filter-car-year-lower')),
+            yearUpper: parseInt(getValueById('filter-car-year-upper')),
+            motor: parseFloat(getValueById('filter-car-motor')),
+            transmission: getValueById('filter-car-transmission')
+        }
+        setInnerHTML("content", getcarsHTML(filter));
+    });
 }
 
 function removePreload() {
     document.body.classList.remove("preload");
 }
-
-document.getElementById("logo").addEventListener('click', () => {
-    setInnerHTML("content", getcarsHTML(null));
-});
-
-document.getElementById("main-user").addEventListener('click', () => {
-    setInnerHTML("content", getUserInfoHTML(null));
-});
-
-document.getElementById("filter-button").addEventListener('click', () => {
-    filter = {
-        model: getValueById('filter-car-model'),
-        yearLower: parseInt(getValueById('filter-car-year-lower')),
-        yearUpper: parseInt(getValueById('filter-car-year-upper')),
-        motor: parseFloat(getValueById('filter-car-motor')),
-        transmission: getValueById('filter-car-transmission')
-    }
-    setInnerHTML("content", getcarsHTML(filter));
-});
 
 function setInnerHTML(id, html) {
     document.getElementById(id).innerHTML = html;
@@ -157,6 +163,32 @@ function getUserInfoHTML() {
     </div>
     `
     return userinfoHTML;
+}
+
+
+function burgerMenuClicked() {
+    // alert("dsja");
+    let burgerMenu = document.querySelector(".burger-menu-items");
+    let burgerMenuImg = document.getElementById('burger-menu-img');
+    if (burgerMenuShown) {
+        burgerMenuImg.src = 'resources/burger.png';
+        burgerMenu.style.left = '-230px';
+    } else {
+        burgerMenuImg.src = 'resources/close.png';
+        burgerMenu.style.left = '0px';
+    }
+    burgerMenuShown = !burgerMenuShown;
+}
+
+function avatarClicked() {
+    let avatar = document.getElementById("avatar-content");
+    if (avatarShown) {
+        avatar.style.right = '-230px';
+    } else {
+        avatar.style.right = '0px';
+    }
+    avatarShown = !avatarShown;
+    
 }
 
 function getNumWithCommas(num) {

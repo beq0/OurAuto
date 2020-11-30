@@ -2,15 +2,20 @@
 <html>
 
 <head>
-	<title>OutAuto</title>
+	<title>OurAuto</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body class="preload">
 	<div class="main-container">
 		<div class="header-info">
+			<div class="burger-menu">
+				<img id="burger-menu-img" src="./resources/burger.png" width="30px" height="30px" style="margin-left: 10px;" onclick="burgerMenuClicked()">
+			</div>
+
 			<div id="logo">
-				MyAuto
+				OurAuto
 			</div>
 			
 			<div class="user-info">
@@ -24,24 +29,62 @@
 					</button>
 				</div>
 			</div>
+
+			<div class="avatar">
+				<img src="./resources/user.png"  width="30px" height="30px" style="margin-right: 10px;" onclick="avatarClicked()">
+			</div>
+		</div>
+
+		<div id="avatar-content" class="hidden-modal">
+			<div id="avatar-user" class="avatar-content-item">
+				სახელი გვარი
+			</div>
+			
+			<div>
+				<button id="avatar-logout-button" class="avatar-content-item">
+					გასვლა
+				</button>
+			</div>
 		</div>
 
 		<div class="menu-items">
 			<div>
-				<a href="http://google.com" target="_blank">მთავარი</a>
+				<a class="menu-item-content" href="http://google.com" target="_blank">მთავარი</a>
 			</div>
 
 			<div>
-				<a href="http://facebook.com" target="_blank">ავტონაწილები</a>
+				<a class="menu-item-content" href="http://facebook.com" target="_blank">ავტონაწილები</a>
 			</div>
 
 			<div>
-				<a href="http://twitter.com" target="_blank">განბაჟება</a>
+				<a class="menu-item-content" href="http://twitter.com" target="_blank">განბაჟება</a>
 			</div>
 
 			<div>
-				<a href="http://youtube.com" target="_blank">კონტაქტი</a>
+				<a class="menu-item-content" href="http://youtube.com" target="_blank">კონტაქტი</a>
 			</div>
+		</div>
+
+		<div class="burger-menu-items hidden-modal">
+			<div id="first-burger-menu-item" class="burger-menu-item">
+				<a class="menu-item-content" href="http://google.com" target="_blank">მთავარი</a>
+			</div>
+	
+			<div class="burger-menu-item">
+				<a class="menu-item-content" href="http://facebook.com" target="_blank">ავტონაწილები</a>
+			</div>
+	
+			<div class="burger-menu-item">
+				<a class="menu-item-content" href="http://twitter.com" target="_blank">განბაჟება</a>
+			</div>
+	
+			<div id="last-burger-menu-item" class="burger-menu-item">
+				<a class="menu-item-content" href="http://youtube.com" target="_blank">კონტაქტი</a>
+			</div>
+		</div>
+
+		<div class="content-separator">
+
 		</div>
 
 		<div class="filter-and-content">

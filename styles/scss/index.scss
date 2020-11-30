@@ -9,6 +9,7 @@ $menu-item-font: 'Raleway', sans-serif;
 $car-info-font: 'Quicksand', sans-serif;
 
 $menu-transition: 0.5s;
+$menu-height: 50px;
 
 $car-img-width: 200px;
 $car-img-height: 140px;
@@ -44,7 +45,7 @@ body {
 	cursor: pointer;
 	font-size: 50px;
 	color: $car-price-color;
-	margin: 0px 0px 5px 15px;
+	margin: 0px 0px 0px 15px;
 }
 
 .user-info {
@@ -77,13 +78,21 @@ body {
 	}
 }
 
+.burger-menu {
+	display: none;
+}
+
+.avatar {
+	display: none;
+}
+
 .menu-items {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: center;
 	background: $menu-background-color;
-	height: 50px;
+	height: $menu-height;
 
 	& > div {
 		padding: 10px;
@@ -100,12 +109,118 @@ body {
 	}
 	
 	& > div > a {
-		text-decoration: none;
-		color: white;
-		font-family: $menu-item-font;
-		font-size: 20px;
 		transition: $menu-transition;
 	}
+}
+
+.menu-item-content {
+	text-decoration: none;
+	color: white;
+	font-family: $menu-item-font;
+	font-size: 20px;
+}
+
+.hidden-modal {
+	background-color: #ffc800;
+	padding: 10px;
+	position: absolute;
+	border: 2px solid white;
+	border-radius: 10px;
+	width: 200px;
+	text-align: center;
+	transition: 1s;
+}
+
+.burger-menu-items {
+	left: -230px;
+}
+
+.burger-menu-item {
+	margin-bottom: 6px;
+}
+
+#last-burger-menu-item {
+	margin-bottom: 0;
+}
+
+#avatar-content {
+	right: -230px;
+}
+
+.avatar-content-item {
+	margin-bottom: 6px;
+}
+
+#avatar-user {
+	color: white;
+	cursor: pointer;
+}
+
+#avatar-logout-button {
+	cursor: pointer;
+	color: grey;
+	font-size: 15px;
+	font-weight: bold;
+	width: 80px;
+	height: 30px;
+	background-color: $header-background-color;
+	border: 1px solid #e2ea74;
+	border-radius: 5px;
+	margin-bottom: 0;
+	transition: 0.3s;
+	&:hover {
+    	box-shadow: 0 0 5px #a6ad48;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.header-info {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	#logo {
+		margin: 0;
+	}
+	
+	.user-info {
+		display: none;
+	}
+
+	.burger-avatar {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		height: $menu-height;
+		background-color: $menu-background-color;
+	}
+
+	.burger-menu {
+		display: flex;
+		align-items: center;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.avatar {
+		display: flex;
+		align-items: center;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.menu-items {
+		display: none;
+	}
+}
+
+.content-separator {
+	display: none;
 }
 
 .filter-and-content {
@@ -185,6 +300,7 @@ body {
 	width: 800px;
 	margin: 10px 0;
 	font-family: $car-info-font;
+	text-overflow: ellipsis;
 
 	& > img {
 		width: $car-img-width;
@@ -208,4 +324,47 @@ body {
 .car-general-info {
 	font-size: 13px;
 	color: grey;
+}
+
+@media only screen and (max-width: 600px) {
+	.content-separator {
+		display: block;
+		width: 100%;
+		height: 10px;
+		background-color: $menu-background-color;
+	}
+	
+	.filter-and-content {
+		flex-direction: column;
+	}
+
+	.filters {
+		flex-direction: row;
+		justify-content: center;
+		flex-wrap: wrap;
+		height: auto;
+		width: auto;
+		padding-top: 15px;
+    	padding-bottom: 15px;
+	}
+
+	.filter {
+		margin: 0px 12px;
+	}
+
+	#content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.car {
+		flex-direction: column;
+		align-items: center;
+		width: auto;
+		margin: 10px 25px;
+		width: 200px;
+    	height: 275px;
+	}
 }
