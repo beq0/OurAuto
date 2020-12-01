@@ -5,6 +5,7 @@
 	<title>OurAuto</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="styles/index.css">
+	<link rel="stylesheet" href="styles/car_info.css">
 </head>
 
 <body class="preload">
@@ -14,12 +15,12 @@
 				<img id="burger-menu-img" src="./resources/burger.png" width="30px" height="30px" style="margin-left: 10px;" onclick="burgerMenuClicked()">
 			</div>
 
-			<div id="logo">
+			<div id="logo" onclick="logoClicked()">
 				OurAuto
 			</div>
 			
 			<div class="user-info">
-				<div id="main-user" class="user">
+				<div id="main-user" class="user" onclick="mainUserClicked()">
 					სახელი გვარი
 				</div>
 				
@@ -36,7 +37,7 @@
 		</div>
 
 		<div id="avatar-content" class="hidden-modal">
-			<div id="avatar-user" class="avatar-content-item">
+			<div id="avatar-user" class="avatar-content-item" onclick="avatarUserClicked()">
 				სახელი გვარი
 			</div>
 			
@@ -114,7 +115,7 @@
 					<input type="text" id="filter-car-transmission">
 				</div>
 
-				<div id="filter-button">
+				<div id="filter-button" onclick="filterButtonClicked()">
 					<img src="https://icon-library.com/images/white-search-icon-transparent-background/white-search-icon-transparent-background-4.jpg"
 						width="17px" height="17px">
 					<div>გაფილტრვა</div>
@@ -127,8 +128,8 @@
 		</div>
 		
 	</div>
-</body>
 
 <script src="index.js"></script>
+</body>
 
 </html>

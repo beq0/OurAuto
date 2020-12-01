@@ -301,11 +301,12 @@ body {
 	margin: 10px 0;
 	font-family: $car-info-font;
 	text-overflow: ellipsis;
+}
 
-	& > img {
-		width: $car-img-width;
-		height: $car-img-height;
-	}
+.car-img {
+	width: $car-img-width;
+	height: $car-img-height;
+	cursor: pointer;
 }
 
 .car-info {
@@ -315,6 +316,10 @@ body {
 .car-main-info {
 	font-size: 16px;
 	font-weight: bold;
+}
+
+.car-model {
+	cursor: pointer;
 }
 
 .car-price {

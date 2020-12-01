@@ -1,3 +1,45 @@
+const filter_and_content_html = 
+`
+<div class="filter-and-content">
+<div class="filters">
+    <div class="filter">
+        <div class="filter-label">მოდელი:</div>
+        <input type="text" id="filter-car-model">
+    </div>
+
+    <div class="filter">
+        <div class="filter-label">საწყისი წელი:</div>
+        <input type="number" id="filter-car-year-lower">
+    </div>
+
+    <div class="filter">
+        <div class="filter-label">საბოლოო წელი:</div>
+        <input type="number" id="filter-car-year-upper">
+    </div>
+
+    <div class="filter">
+        <div class="filter-label">ძრავი:</div>
+        <input type="number" id="filter-car-motor">
+    </div>
+
+    <div class="filter">
+        <div class="filter-label">ტრანსმისია:</div>
+        <input type="text" id="filter-car-transmission">
+    </div>
+
+    <div id="filter-button" onclick="filterButtonClicked()">
+        <img src="https://icon-library.com/images/white-search-icon-transparent-background/white-search-icon-transparent-background-4.jpg"
+            width="17px" height="17px">
+        <div>გაფილტრვა</div>
+    </div>
+</div>
+
+<div id="content">
+    
+</div>
+</div>
+`;
+
 let userUsername = 'beq0';
 let userName = 'ბექა';
 let userFamilyName = 'გუგულაშვილი';
@@ -7,6 +49,7 @@ let burgerMenuShown = false, avatarShown = false;
 
 let cars = [
     {
+        id: 1,
         image: 'https://bringatrailer.com/wp-content/uploads/2018/07/1990_bmw_325ic_hartge_h35_15312399737dff9f98764da15085606_10154762629479201_7529277224418374730_n.jpg?fit=940%2C627',
         model: 'bmw e30',
         price: 20000,
@@ -17,6 +60,7 @@ let cars = [
         techView: false
     },
     {
+        id: 2,
         image: 'https://pictures.dealer.com/j/justmercedes/1458/a8b667f5a9540ba18440c079c2663e2dx.jpg',
         model: 'S class 2020',
         price: 100000,
@@ -27,6 +71,7 @@ let cars = [
         techView: true
     },
     {
+        id: 3,
         image: 'https://cnet2.cbsistatic.com/img/IcPcR4GvpIj62M19-X9e7rzeQ64=/1200x675/2012/05/08/8a711731-bb76-11e2-8a8e-0291187978f3/35266802_OVR.JPG',
         model:  'პრიუსი კარგ მდგომარეობაში',
         price: 13000,
@@ -37,6 +82,7 @@ let cars = [
         techView: true
     },
     {
+        id: 4,
         image: 'https://picture1.goo-net.com/7000707591/30160222/J/70007075913016022200100.jpg',
         model:  'honda fit 2005 ფიტი',
         price: 7000,
@@ -52,36 +98,194 @@ window.onload = () => {
     setInnerHTML("content", getcarsHTML(null));
     removePreload();
     
-    document.getElementById("logo").addEventListener('click', () => {
-        setInnerHTML("content", getcarsHTML(null));
-    });
+    // setListener("logo", "click", () => {
+    //     document.querySelector('.filter-and-content').innerHTML = filter_and_content_html;
+    //     setInnerHTML("content", getcarsHTML(null));
+    // });
+
+    // setListener("main-user", "click", () => {
+    //     document.querySelector('.filter-and-content').innerHTML = getUserInfoHTML(null);
+    // });
     
-    document.getElementById("main-user").addEventListener('click', () => {
-        setInnerHTML("content", getUserInfoHTML(null));
-    });
-    
-    document.getElementById("avatar-user").addEventListener('click', () => {
-        setInnerHTML("content", getUserInfoHTML(null));
-    });
-    
-    document.getElementById("filter-button").addEventListener('click', () => {
-        filter = {
-            model: getValueById('filter-car-model'),
-            yearLower: parseInt(getValueById('filter-car-year-lower')),
-            yearUpper: parseInt(getValueById('filter-car-year-upper')),
-            motor: parseFloat(getValueById('filter-car-motor')),
-            transmission: getValueById('filter-car-transmission')
-        }
-        setInnerHTML("content", getcarsHTML(filter));
-    });
+    // setListener("avatar-user", "click", () => {
+    //     document.querySelector('.filter-and-content').innerHTML = getUserInfoHTML(null);
+    // });
+
+    // setListener("filter-button", "click", () => {
+    //     filter = {
+    //         model: getValueById('filter-car-model'),
+    //         yearLower: parseInt(getValueById('filter-car-year-lower')),
+    //         yearUpper: parseInt(getValueById('filter-car-year-upper')),
+    //         motor: parseFloat(getValueById('filter-car-motor')),
+    //         transmission: getValueById('filter-car-transmission')
+    //     }
+    //     setInnerHTML("content", getcarsHTML(filter));
+    // });
+}
+
+function logoClicked() {
+    document.querySelector('.filter-and-content').innerHTML = filter_and_content_html;
+    setInnerHTML("content", getcarsHTML(null));
+}
+
+function mainUserClicked() {
+    document.querySelector('.filter-and-content').innerHTML = getUserInfoHTML(null);
+}
+
+function avatarUserClicked() {
+    document.querySelector('.filter-and-content').innerHTML = getUserInfoHTML(null);
+}
+
+function filterButtonClicked() {
+    filter = {
+        model: getValueById('filter-car-model'),
+        yearLower: parseInt(getValueById('filter-car-year-lower')),
+        yearUpper: parseInt(getValueById('filter-car-year-upper')),
+        motor: parseFloat(getValueById('filter-car-motor')),
+        transmission: getValueById('filter-car-transmission')
+    }
+    setInnerHTML("content", getcarsHTML(filter));
 }
 
 function removePreload() {
     document.body.classList.remove("preload");
 }
 
+function carClicked(id) {
+    let mainContainer = document.querySelector('.filter-and-content');
+    selectedCar = cars.filter(c => c.id === id)[0];
+    html = 
+    `
+    <div class="ci-main-container">
+        <div class="ci-car-container">
+            <div class="ci-car-img">
+                <img src="${selectedCar.image}" 
+                    width="700px" height="500px">
+            </div>
+
+            <div class="ci-car-info">
+                <div class="ci-main-info">
+                    <div>
+                        წელი: ${selectedCar.year}
+                    </div>
+    
+                    <div>
+                        ძრავი: ${selectedCar.motor}
+                    </div>
+                
+                    <div>
+                        ტრანსმისია: ${selectedCar.transmission}
+                    </div>
+    
+                    <div>
+                        გარბენი: ${getNumWithCommas(selectedCar.mileage)} კმ
+                    </div>
+    
+                    <div>
+                        ტექ. დათვალიერება: ${selectedCar.techView ? 'კი' : 'არა'}
+                    </div>
+                </div>
+
+                <div class="ci-info">
+                    <div>
+                        წელი: ${selectedCar.year}
+                    </div>
+    
+                    <div>
+                        ძრავი: ${selectedCar.motor}
+                    </div>
+                
+                    <div>
+                        ტრანსმისია: ${selectedCar.transmission}
+                    </div>
+    
+                    <div>
+                        გარბენი: ${getNumWithCommas(selectedCar.mileage)} კმ
+                    </div>
+    
+                    <div>
+                        ტექ. დათვალიერება: ${selectedCar.techView ? 'კი' : 'არა'}
+                    </div>
+                </div>
+            </div>
+
+            <div class="ci-user">
+                <div>
+                    ${userUsername}
+                </div>
+            
+                <div>
+                    ${userName}
+                </div>
+                
+                <div>
+                    ${userFamilyName}
+                </div>
+            
+                <div>
+                    ${userPhoneNumber}
+                </div>
+            </div>
+
+        </div>
+    `
+    similar_cars_html = `<div class="ci-similar-cars">`;
+    cars.forEach(car => {
+        similar_cars_html += 
+        `
+        <div class="ci-similar-car">
+            <img class="ci-similar-car-img" src="${car.image}" onclick="carClicked(${car.id})">
+
+            <div class="ci-similar-car-info">
+                <div class="ci-similar-car-main-info">
+                    <div class="ci-similar-car-price">
+                        <span>${getNumWithCommas(car.price)}</span> ₾
+                    </div>
+
+                    <div class="ci-similar-car-model" onclick="carClicked(${car.id})">
+                        <span>${car.model}</span>
+                    </div>
+                </div>
+                
+                <div class="ci-similar-car-general-info">
+                    <div>
+                        წელი: <span>${car.year}</span>
+                    </div>
+
+                    <div>
+                        ძრავი: <span>${car.motor}</span>
+                    </div>
+                
+                    <div>
+                        ტრანსმისია: <span>${car.transmission}</span>
+                    </div>
+
+                    <div>
+                        გარბენი: <span>${getNumWithCommas(car.mileage)}</span> კმ
+                    </div>
+
+                    <div>
+                        ტექ. დათვალიერება: <span>${car.techView ? 'კი' : 'არა'}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `
+    });
+
+    html += similar_cars_html;
+    for (let i = 0; i < 2; i++) html += '</div>';
+    mainContainer.innerHTML = html;
+}
+
 function setInnerHTML(id, html) {
-    document.getElementById(id).innerHTML = html;
+    let elem = document.getElementById(id); 
+    if (elem !== null) elem.innerHTML = html;
+}
+
+function setListener(id, event, action) {
+    let elem = document.getElementById(id);
+    if (elem !== null) elem.addEventListener(event, action);
 }
 
 function getValueById(id) {
@@ -89,7 +293,6 @@ function getValueById(id) {
 }
 
 function getcarsHTML(filter) {
-    console.log(filter);
     carsListHTML = '';
     filteredCars = filter === null ? cars : cars.filter(car => {
         return (isEmpty(filter.model) ? true : car.model.includes(filter.model)) &&
@@ -102,7 +305,7 @@ function getcarsHTML(filter) {
         carsListHTML += 
         `
         <div class="car">
-            <img src="${car.image}">
+            <img class="car-img" src="${car.image}" onclick="carClicked(${car.id})">
 
             <div class="car-info">
                 <div class="car-main-info">
@@ -110,7 +313,7 @@ function getcarsHTML(filter) {
                         <span>${getNumWithCommas(car.price)}</span> ₾
                     </div>
 
-                    <div>
+                    <div class="car-model" onclick="carClicked(${car.id})">
                         <span>${car.model}</span>
                     </div>
                 </div>

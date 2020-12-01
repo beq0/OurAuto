@@ -1,0 +1,49 @@
+$car-img-width: 200px;
+$car-img-height: 140px;
+
+.ci-main-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+}
+
+.ci-car-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ci-car-img {
+    margin-bottom: 10px;
+}
+
+.ci-car-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ci-main-info {
+    margin-bottom: 10px;
+}
+
+.ci-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    & > div {
+        margin: 0 10px;
+    }
+}
+
+
+.ci-similar-car-img {
+    width: $car-img-width;
+    height: $car-img-height;
+    cursor: pointer;
+}
+
+.ci-similar-car-model {
+    cursor: pointer;
+}
