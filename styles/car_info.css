@@ -2,46 +2,128 @@
   display: flex;
   justify-content: space-around;
   width: 100vw;
+  margin-top: 10px;
 }
 
 .ci-car-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 100px;
+}
+
+.ci-car-price {
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #f0a65a;
 }
 
 .ci-car-img {
   margin-bottom: 10px;
+}
+.ci-car-img > img {
+  box-shadow: 0 3px 20px grey;
+  border-radius: 10px;
 }
 
 .ci-car-info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
+  padding: 10px 20px;
+  border: 2px solid lightgray;
+  border-radius: 10px;
+  box-shadow: 0 0 5px lightgray;
 }
 
 .ci-main-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 550px;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  border: 2px solid #ebebeb;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 17px;
+  color: #ff8100;
+  box-shadow: 0 0 5px lightgray;
+}
+
+.ci-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 550px;
+  font-style: italic;
+  font-size: 15px;
+  color: gray;
+}
+
+#ci-car-info-user-separator {
+  width: 400px;
+  background-color: #ffc800;
+  border: 3px solid #ffc800;
+  border-radius: 10px;
   margin-bottom: 10px;
 }
 
 .ci-user {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  color: gray;
+  font-weight: bold;
 }
-.ci-user > div {
-  margin: 0 10px;
+
+.ci-user-name {
+  display: flex;
+  margin-bottom: 5px;
+}
+.ci-user-name > div {
+  margin: 0 5px;
+}
+
+.ci-user-contact {
+  font-style: italic;
+}
+
+.ci-similar-car {
+  margin-bottom: 20px;
+  display: flex;
 }
 
 .ci-similar-car-img {
+  cursor: pointer;
   width: 200px;
   height: 140px;
-  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 5px black;
 }
 
 .ci-similar-car-model {
   cursor: pointer;
+}
+
+.ci-similar-car-info {
+  margin-left: 10px;
+}
+
+.ci-similar-car-main-info {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.ci-similar-car-price {
+  color: #f0a65a;
+}
+
+.ci-similar-car-general-info {
+  font-size: 13px;
+  color: grey;
 }
 
 /*# sourceMappingURL=car_info.css.map */

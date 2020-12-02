@@ -27,7 +27,7 @@ const filter_and_content_html =
         <input type="text" id="filter-car-transmission">
     </div>
 
-    <div id="filter-button" onclick="filterButtonClicked()">
+    <div class="filter" id="filter-button" onclick="filterButtonClicked()">
         <img src="https://icon-library.com/images/white-search-icon-transparent-background/white-search-icon-transparent-background-4.jpg"
             width="17px" height="17px">
         <div>გაფილტრვა</div>
@@ -97,30 +97,6 @@ let cars = [
 window.onload = () => {
     setInnerHTML("content", getcarsHTML(null));
     removePreload();
-    
-    // setListener("logo", "click", () => {
-    //     document.querySelector('.filter-and-content').innerHTML = filter_and_content_html;
-    //     setInnerHTML("content", getcarsHTML(null));
-    // });
-
-    // setListener("main-user", "click", () => {
-    //     document.querySelector('.filter-and-content').innerHTML = getUserInfoHTML(null);
-    // });
-    
-    // setListener("avatar-user", "click", () => {
-    //     document.querySelector('.filter-and-content').innerHTML = getUserInfoHTML(null);
-    // });
-
-    // setListener("filter-button", "click", () => {
-    //     filter = {
-    //         model: getValueById('filter-car-model'),
-    //         yearLower: parseInt(getValueById('filter-car-year-lower')),
-    //         yearUpper: parseInt(getValueById('filter-car-year-upper')),
-    //         motor: parseFloat(getValueById('filter-car-motor')),
-    //         transmission: getValueById('filter-car-transmission')
-    //     }
-    //     setInnerHTML("content", getcarsHTML(filter));
-    // });
 }
 
 function logoClicked() {
@@ -163,67 +139,79 @@ function carClicked(id) {
                     width="700px" height="500px">
             </div>
 
+            <div class="ci-car-price">
+                ${getNumWithCommas(selectedCar.price)} ₾
+            </div>
+
             <div class="ci-car-info">
                 <div class="ci-main-info">
-                    <div>
-                        წელი: ${selectedCar.year}
+                    <div class="ci-main-info-left">
+                        <div>
+                            წელი: ${selectedCar.year}
+                        </div>
+        
+                        <div>
+                            ძრავი: ${selectedCar.motor}
+                        </div>
+                    
+                        <div>
+                            ტრანსმისია: ${selectedCar.transmission}
+                        </div>
                     </div>
-    
-                    <div>
-                        ძრავი: ${selectedCar.motor}
-                    </div>
-                
-                    <div>
-                        ტრანსმისია: ${selectedCar.transmission}
-                    </div>
-    
-                    <div>
-                        გარბენი: ${getNumWithCommas(selectedCar.mileage)} კმ
-                    </div>
-    
-                    <div>
-                        ტექ. დათვალიერება: ${selectedCar.techView ? 'კი' : 'არა'}
+                    
+                    <div class="ci-main-info-right">
+                        <div>
+                            გარბენი: ${getNumWithCommas(selectedCar.mileage)} კმ
+                        </div>
+
+                        <div>
+                            ტექ. დათვალიერება: ${selectedCar.techView ? 'კი' : 'არა'}
+                        </div>
                     </div>
                 </div>
 
                 <div class="ci-info">
-                    <div>
-                        წელი: ${selectedCar.year}
+                    <div class="ci-info-left">
+                        <div>
+                            წელი: ${selectedCar.year}
+                        </div>
+
+                        <div>
+                            ძრავი: ${selectedCar.motor}
+                        </div>
+                    
+                        <div>
+                            ტრანსმისია: ${selectedCar.transmission}
+                        </div>
                     </div>
-    
-                    <div>
-                        ძრავი: ${selectedCar.motor}
-                    </div>
-                
-                    <div>
-                        ტრანსმისია: ${selectedCar.transmission}
-                    </div>
-    
-                    <div>
-                        გარბენი: ${getNumWithCommas(selectedCar.mileage)} კმ
-                    </div>
-    
-                    <div>
-                        ტექ. დათვალიერება: ${selectedCar.techView ? 'კი' : 'არა'}
+                    
+                    <div class="ci-info-right">
+                        <div>
+                            გარბენი: ${getNumWithCommas(selectedCar.mileage)} კმ
+                        </div>
+
+                        <div>
+                            ტექ. დათვალიერება: ${selectedCar.techView ? 'კი' : 'არა'}
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <div id="ci-car-info-user-separator"></div>
+
             <div class="ci-user">
-                <div>
-                    ${userUsername}
-                </div>
-            
-                <div>
-                    ${userName}
+                <div class="ci-user-name">
+                    <div>
+                        ${userName}
+                    </div>
+                    
+                    <div>
+                        ${userFamilyName}
+                    </div>
                 </div>
                 
-                <div>
-                    ${userFamilyName}
-                </div>
-            
-                <div>
-                    ${userPhoneNumber}
+                <div class="ci-user-contact">
+                    ტელ: ${userPhoneNumber}
                 </div>
             </div>
 
