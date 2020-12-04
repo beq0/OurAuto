@@ -96,6 +96,8 @@ let cars = [
 
 window.onload = () => {
     setInnerHTML("content", getcarsHTML(null));
+    setInnerHTML("main-user", userName + " " + userFamilyName);
+    setInnerHTML("avatar-user", userName + " " + userFamilyName);
     removePreload();
 }
 
@@ -135,8 +137,7 @@ function carClicked(id) {
     <div class="ci-main-container">
         <div class="ci-car-container">
             <div class="ci-car-img">
-                <img src="${selectedCar.image}" 
-                    width="700px" height="500px">
+                <img src="${selectedCar.image}">
             </div>
 
             <div class="ci-car-price">
@@ -217,7 +218,15 @@ function carClicked(id) {
 
         </div>
     `
-    similar_cars_html = `<div class="ci-similar-cars">`;
+    similar_cars_html = 
+    `
+    <div class="ci-user-similar-cars-separator"></div>
+
+    <div class="ci-similar-cars">
+        <div class="ci-similar-cars-label">
+            მსგავსი მანქანები
+        </div>
+    `;
     cars.forEach(car => {
         similar_cars_html += 
         `
@@ -337,20 +346,43 @@ function getcarsHTML(filter) {
 function getUserInfoHTML() {
     userinfoHTML = 
     `
-    <div>
-        ${userUsername}
-    </div>
+    <div class="u-container">
+        <div class="u-u">
+            <div class="u-img">
+                <img src="resources/user.png">
+            </div>
 
-    <div>
-        ${userName}
-    </div>
-    
-    <div>
-        ${userFamilyName}
-    </div>
+            <div class="u-main-info">
+                <div class="u-info u-username">
+                    ${userUsername}
+                </div>
+            
+                <div class="u-info">
+                    ${userName}
+                </div>
+                
+                <div class="u-info">
+                    ${userFamilyName}
+                </div>
+            
+                <div class="u-info">
+                    ${userPhoneNumber}
+                </div>
+            </div>
+        </div>
 
-    <div>
-        ${userPhoneNumber}
+        <div class="u-contact-buttons">
+            <div class="u-contact-button u-add-friend" onclick="addFriendClicked()">
+                <img src="resources/addFriend.jpg">
+                მეგობრებში დამატება
+            </div>
+
+            <div class="u-contact-button u-contact" onclick="contactClicked()">
+                <img src="resources/message.png">
+                დაკავშირება
+            </div>
+        </div>
+        
     </div>
     `
     return userinfoHTML;
@@ -358,7 +390,6 @@ function getUserInfoHTML() {
 
 
 function burgerMenuClicked() {
-    // alert("dsja");
     let burgerMenu = document.querySelector(".burger-menu-items");
     let burgerMenuImg = document.getElementById('burger-menu-img');
     if (burgerMenuShown) {

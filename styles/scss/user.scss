@@ -1,0 +1,60 @@
+.u-u {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.u-img {
+    margin-right: 30px;
+    & > img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+.u-main-info {
+    color: gray;
+}
+
+.u-info {
+    margin-bottom: 7px;
+}
+
+.u-username {
+    color: #f0a65a;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.u-contact-buttons {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.u-contact-button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    background-color: #ffc800;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: #80807f;
+    font-weight: bold;
+    & > img {
+        width: 25px;
+        height: 25px;
+        margin-right: 5px;
+    }
+}
+
+.u-add-friend {
+    color: #80807f;
+}
+
+.u-contact {
+    color: white;
+}

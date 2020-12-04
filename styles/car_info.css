@@ -25,6 +25,8 @@
 .ci-car-img > img {
   box-shadow: 0 3px 20px grey;
   border-radius: 10px;
+  width: 700px;
+  height: 500px;
 }
 
 .ci-car-info {
@@ -91,6 +93,37 @@
   font-style: italic;
 }
 
+@media only screen and (max-width: 600px) {
+  .ci-main-container {
+    flex-direction: column;
+  }
+
+  .ci-car-img > img {
+    width: 400px;
+    height: 270px;
+  }
+
+  .ci-main-info {
+    width: 450px;
+    font-size: 16px;
+  }
+
+  .ci-info {
+    width: 450px;
+  }
+}
+.ci-user-similar-cars-separator {
+  display: none;
+}
+
+.ci-similar-cars-label {
+  font-size: 20px;
+  font-weight: bold;
+  color: darkslategray;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .ci-similar-car {
   margin-bottom: 20px;
   display: flex;
@@ -124,6 +157,22 @@
 .ci-similar-car-general-info {
   font-size: 13px;
   color: grey;
+}
+
+@media only screen and (max-width: 600px) {
+  .ci-user-similar-cars-separator {
+    display: block;
+    width: 500px;
+    background-color: #713d00;
+    border: 3px solid #713d00;
+    border-radius: 10px;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+
+  .ci-similar-cars {
+    margin-left: 20px;
+  }
 }
 
 /*# sourceMappingURL=car_info.css.map */

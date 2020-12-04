@@ -37,15 +37,13 @@ body {
 .user-info {
   cursor: pointer;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   align-items: center;
-  width: 200px;
   font-size: 16px;
 }
 
 .user {
   color: #f0a65a;
+  margin-right: 10px;
 }
 
 #logout-button {
@@ -271,6 +269,7 @@ body {
 
 #content {
   margin: 5px 10px;
+  margin-bottom: 50px;
 }
 
 .car {
@@ -350,9 +349,18 @@ body {
     flex-direction: column;
     align-items: center;
     width: auto;
-    margin: 10px 25px;
+    margin: 20px 25px;
     width: 200px;
     height: 275px;
+  }
+
+  .car-img {
+    width: 200px;
+    height: 140px;
+  }
+
+  .car-info {
+    margin-top: 10px;
   }
 }
 
