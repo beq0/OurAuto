@@ -40,6 +40,7 @@ const filter_and_content_html =
 </div>
 `;
 
+let userId = 1;
 let userUsername = 'beq0';
 let userName = 'ბექა';
 let userFamilyName = 'გუგულაშვილი';
@@ -102,16 +103,24 @@ window.onload = () => {
 }
 
 function logoClicked() {
-    document.querySelector('.filter-and-content').innerHTML = filter_and_content_html;
+    setScreenContent(filter_and_content_html);
     setInnerHTML("content", getcarsHTML(null));
 }
 
 function mainUserClicked() {
-    document.querySelector('.filter-and-content').innerHTML = getUserInfoHTML(null);
+    setScreenContent(getUserInfoHTML(null));
 }
 
 function avatarUserClicked() {
-    document.querySelector('.filter-and-content').innerHTML = getUserInfoHTML(null);
+    setScreenContent(getUserInfoHTML(null));
+}
+
+function userClicked(userId) {
+    setScreenContent(getUserInfoHTML(userId));
+}
+
+function setScreenContent(html) {
+    document.querySelector('.filter-and-content').innerHTML = html;
 }
 
 function filterButtonClicked() {
@@ -201,7 +210,7 @@ function carClicked(id) {
             <div id="ci-car-info-user-separator"></div>
 
             <div class="ci-user">
-                <div class="ci-user-name">
+                <div class="ci-user-name" onclick="userClicked(${userId})">
                     <div>
                         ${userName}
                     </div>
@@ -343,7 +352,7 @@ function getcarsHTML(filter) {
     return carsListHTML;
 }
 
-function getUserInfoHTML() {
+function getUserInfoHTML(userId) {
     userinfoHTML = 
     `
     <div class="u-container">
@@ -381,6 +390,56 @@ function getUserInfoHTML() {
                 <img src="resources/message.png">
                 დაკავშირება
             </div>
+        </div>
+
+        <div class="u-cars">
+            <div class="u-cars-label">
+                მომხმარებლის განცხადებები
+            </div>`;
+            
+            cars.forEach(car => {
+            userinfoHTML += 
+            `
+            <div class="u-car">
+                <img class="u-car-img" src="${car.image}" onclick="carClicked(${car.id})">
+    
+                <div class="u-car-info">
+                    <div class="u-car-main-info">
+                        <div class="u-car-price">
+                            <span>${getNumWithCommas(car.price)}</span> ₾
+                        </div>
+    
+                        <div class="u-car-model" onclick="carClicked(${car.id})">
+                            <span>${car.model}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="u-car-general-info">
+                        <div>
+                            წელი: <span>${car.year}</span>
+                        </div>
+    
+                        <div>
+                            ძრავი: <span>${car.motor}</span>
+                        </div>
+                    
+                        <div>
+                            ტრანსმისია: <span>${car.transmission}</span>
+                        </div>
+    
+                        <div>
+                            გარბენი: <span>${getNumWithCommas(car.mileage)}</span> კმ
+                        </div>
+    
+                        <div>
+                            ტექ. დათვალიერება: <span>${car.techView ? 'კი' : 'არა'}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;});
+        userinfoHTML += 
+        `    
         </div>
         
     </div>

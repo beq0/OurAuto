@@ -90,6 +90,7 @@ $menu-background-color: #ffc800;
 }
 
 .ci-user-name {
+    cursor: pointer;
     display: flex;
     margin-bottom: 5px;
     & > div {
