@@ -1,1 +1,3 @@
-workflow
+*/node_modules
+Front/workflow
+*/.env
