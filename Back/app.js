@@ -1,38 +1,51 @@
 const express = require('express');
-const app = express();
-const morgan = require('morgan');
-const cors = require('cors');
+const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const { Sequelize } = require('sequelize');
+const bodyParser = require("body-parser");
+const cors = require('cors');
+const userRoute = require('./routes/user.route');
+const path = require("path");
+
+mongoose.connect('mongodb://localhost/our_auto', {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true
+}, (error) => {
+    if(!error) console.log('Connected to DB!');
+    else console.log(error);
+});
+
+const app = express();
 
 dotenv.config()
-app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-
-console.log(process.env.OUR_AOUTO_DB_USERNAME + ':' + process.env.OUR_AOUTO_DB_PASSWORD);
-const sequelize = new Sequelize('postgres://' + process.env.OUR_AOUTO_DB_USERNAME + ':' + process.env.OUR_AOUTO_DB_PASSWORD + '@localhost:4199/ourauto');
-
-async function testConnection() {
-    try {
-        await sequelize.authenticate();
-        console.log('Connection has been established successfully.');
-    } catch (error) {
-        console.error('Unable to connect to the database:', error);
-    }
-}
-
-testConnection();
-
-// Routes to handle requests
-// app.use('/', require('./api/routes/));
+app.use(express.static(path.join(__dirname, "public")));
 
 
-app.use((req, res, next) => {
-    res.status(404).json({
-        error: new Error('Not Found')
-    });
-});
+app.use('/api/user', userRoute);
+
+app.use('/api/*', (req, res, next) => {
+    res.status(404).json({ message: 'Not Found' });
+  });
+
+
+mongoose.set('useFindAndModify', false);
 
 module.exports = app;
+
+
+// const user = new User({
+//     name: 'Test User',
+// 	username: 'Test Test',
+// 	password: 'dsaj',
+// });
+
+// user.save().then(res => {
+//     console.log(res);
+// }).catch(err => {
+//     console.log(err)
+// });
