@@ -7,18 +7,8 @@ router.post('/editUser', User.editUser);
 
 router.get('/getUsers', User.getUsers);
 
-router.get('/findUser', User.findUser);
+router.get('/findUser/:username', User.findUser);
 
-router.delete('/addCar', User.addCar);
-
-router.delete('/editCar', User.editCar);
-
-router.post('/deleteCar', User.deleteCar);
-
-router.get('/getCars', User.getCars);
-
-router.get('/filterCars', User.filterCars);
-
-router.get('/findCar', User.findCar);
+router.post('/addFriend', User.addFriend);
 
 module.exports = router;

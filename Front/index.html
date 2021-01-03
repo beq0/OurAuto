@@ -5,6 +5,7 @@
 	<title>OurAuto</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="styles/index.css">
+	<link rel="stylesheet" href="styles/main_page.css">
 	<link rel="preload" href="styles/car_info.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 	<noscript><link rel="stylesheet" href="styles/car_info.css"></noscript>
 	<link rel="preload" href="styles/user.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -50,38 +51,14 @@
 		</div>
 
 		<div class="menu-items">
-			<div>
-				<a class="menu-item-content" href="http://google.com" target="_blank">მთავარი</a>
-			</div>
-
-			<div>
-				<a class="menu-item-content" href="http://facebook.com" target="_blank">ავტონაწილები</a>
-			</div>
-
-			<div>
-				<a class="menu-item-content" href="http://twitter.com" target="_blank">განბაჟება</a>
-			</div>
-
-			<div>
-				<a class="menu-item-content" href="http://youtube.com" target="_blank">კონტაქტი</a>
+			<div class="menu-item-content" onclick="mainMenuItemClicked()">
+				მთავარი
 			</div>
 		</div>
 
 		<div class="burger-menu-items hidden-modal">
-			<div id="first-burger-menu-item" class="burger-menu-item">
-				<a class="menu-item-content" href="http://google.com" target="_blank">მთავარი</a>
-			</div>
-	
-			<div class="burger-menu-item">
-				<a class="menu-item-content" href="http://facebook.com" target="_blank">ავტონაწილები</a>
-			</div>
-	
-			<div class="burger-menu-item">
-				<a class="menu-item-content" href="http://twitter.com" target="_blank">განბაჟება</a>
-			</div>
-	
-			<div id="last-burger-menu-item" class="burger-menu-item">
-				<a class="menu-item-content" href="http://youtube.com" target="_blank">კონტაქტი</a>
+			<div id="last-burger-menu-item" class="burger-menu-item"  onclick="mainMenuItemClicked()">
+				მთავარი
 			</div>
 		</div>
 
@@ -90,48 +67,22 @@
 		</div>
 
 		<div class="filter-and-content">
-			<div class="filters">
-				<div class="filter">
-					<div class="filter-label">მოდელი:</div>
-					<input type="text" id="filter-car-model">
-				</div>
-
-				<div class="filter">
-					<div class="filter-label">საწყისი წელი:</div>
-					<input type="number" id="filter-car-year-lower">
-				</div>
-
-				<div class="filter">
-					<div class="filter-label">საბოლოო წელი:</div>
-					<input type="number" id="filter-car-year-upper">
-				</div>
-
-				<div class="filter">
-					<div class="filter-label">ძრავი:</div>
-					<input type="number" id="filter-car-motor">
-				</div>
-
-				<div class="filter">
-					<div class="filter-label">ტრანსმისია:</div>
-					<input type="text" id="filter-car-transmission">
-				</div>
-
-				<div class="filter" id="filter-button" onclick="filterButtonClicked()">
-					<img src="https://icon-library.com/images/white-search-icon-transparent-background/white-search-icon-transparent-background-4.jpg"
-						width="17px" height="17px">
-					<div>გაფილტრვა</div>
-				</div>
-			</div>
-
-			<div id="content">
-				
-			</div>
+			
 		</div>
 		
 	</div>
 
+<script src="scripts/tmp_data.js"></script>
+<script src="scripts/utils/DOMUtils.js"></script>
+<script src="scripts/utils/StringUtils.js"></script>
+<script src="scripts/utils/NumberUtils.js"></script>
+<script src="scripts/addresses.js"></script>
+<script src="scripts/services/user.service.js"></script>
+<script src="scripts/services/car.service.js"></script>
+<script src="scripts/pagehandlers/MainPageHandler.js"></script>
+<script src="scripts/pagehandlers/CarPageHandler.js"></script>
+<script src="scripts/pagehandlers/UserPageHandler.js"></script>
 <script src="scripts/index.js"></script>
-<script src="scripts/user.js"></script>
 </body>
 
 </html>

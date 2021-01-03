@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const bodyParser = require("body-parser");
 const cors = require('cors');
 const userRoute = require('./routes/user.route');
+const carRoute = require('./routes/car.route');
 const path = require("path");
 
 mongoose.connect('mongodb://localhost/our_auto', {
@@ -27,10 +28,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.use('/api/user', userRoute);
+app.use('/api/car', carRoute);
 
 app.use('/api/*', (req, res, next) => {
     res.status(404).json({ message: 'Not Found' });
-  });
+});
 
 
 mongoose.set('useFindAndModify', false);
@@ -45,6 +47,23 @@ module.exports = app;
 // });
 
 // user.save().then(res => {
+//     console.log(res);
+// }).catch(err => {
+//     console.log(err)
+// });
+
+// const car = new Car({
+//     username: '1',
+//     mark: '1',
+//     model: '1',
+//     year: 1,
+//     price: 1,
+//     mileage: 1,
+//     engine: 1,
+//     transmission: '1'
+// });
+
+// car.save().then(res => {
 //     console.log(res);
 // }).catch(err => {
 //     console.log(err)
