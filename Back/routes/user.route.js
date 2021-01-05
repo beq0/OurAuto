@@ -9,6 +9,8 @@ router.get('/getUsers', User.getUsers);
 
 router.get('/findUser/:username', User.findUser);
 
+router.post('/authenticate', User.authenticate);
+
 router.post('/addFriend', User.addFriend);
 
 module.exports = router;

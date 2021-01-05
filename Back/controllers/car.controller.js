@@ -5,6 +5,7 @@ module.exports.addCar = (req, res) => {
         username: req.body.username,
         mark: req.body.mark,
         model: req.body.model,
+        imagePath: getCarImagePath(req.body.imagePath),
         year: req.body.year,
         price: req.body.price,
         mileage: req.body.mileage,
@@ -27,6 +28,7 @@ module.exports.editCar = (req, res) => {
     }
     const mark = req.body.mark;
     const model = req.body.model;
+    const imagePath = getCarImagePath(req.body.imagePath);
     const year = req.body.year;
     const price = req.body.price;
     const mileage = req.body.mileage;
@@ -35,6 +37,7 @@ module.exports.editCar = (req, res) => {
     let updatedCar = {}
     if (mark) updatedCar['mark'] = mark;
     if (model) updatedCar['model'] = model;
+    if (imagePath) updatedCar['imagePath'] = imagePath;
     if (year || year === 0) updatedCar['year'] = year;
     if (price || price === 0) updatedCar['price'] = price;
     if (mileage || mileage === 0) updatedCar['mileage'] = mileage;
@@ -137,5 +140,21 @@ module.exports.getCarsForUser = (req, res) => {
         else res.status(500).json({message: `Could not find Cars for user ${username}`});
     }).catch((err) => {
         res.status(500).json({message: `Error during finding Cars for user ${username}`});
+    })
+}
+
+function getCarImagePath(imagePath) {
+    if (car.imagePath === null || car.imagePath === undefined) {
+        return 'C:/Users/AzRy/Desktop/OurAuto/Front/resources/default-car.png';
+    }
+    return imagePath;
+}
+
+function getCarsWithCorrectImagePaths(cars) {
+    return cars.map((car) => {
+        if (car.imagePath === null || car.imagePath === undefined) {
+            car['imagePath'] = 'C:/Users/AzRy/Desktop/OurAuto/Front/resources/default-car.png';
+        }
+        return car;
     })
 }

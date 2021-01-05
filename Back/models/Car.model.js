@@ -13,6 +13,10 @@ const carSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    imagePath: {
+        type: String,
+        default: 'C:/Users/AzRy/Desktop/OurAuto/Front/resources/default-car.png'
+    },
     year: {
         type: Number,
         required: true

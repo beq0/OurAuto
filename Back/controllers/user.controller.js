@@ -63,6 +63,32 @@ module.exports.findUser = (req, res) => {
     })
 }
 
+module.exports.authenticate = (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    if (!username) {
+        res.status(500).json({message: 'username must be specified to authenticate the user'});
+        return;
+    }
+    if (!password) {
+        res.status(500).json({message: 'password must be specified to authenticate the user'});
+        return;
+    }
+    let userToAuthenticate = {
+        username,
+        password
+    }
+    User.findOne(userToAuthenticate).then((user) => {
+        if (user) {
+            delete user.password;
+            res.status(200).json({message: `User ${username} authenticated successfully!`, user: user});
+        }
+        else res.status(500).json({message: `Authentication failed for User: ${userToAuthenticate}`});
+    }).catch((err) => {
+        res.status(500).json({message: `Error during authenticating User: ${userToAuthenticate}`});
+    })
+}
+
 module.exports.addFriend = (req, res) => {
     if (!req.body._id) {
         res.status(500).json({message: 'Id of the User not provided to add friend!'});

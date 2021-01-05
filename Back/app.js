@@ -6,6 +6,7 @@ const cors = require('cors');
 const userRoute = require('./routes/user.route');
 const carRoute = require('./routes/car.route');
 const path = require("path");
+const Car = require('./models/Car.model')
 
 mongoose.connect('mongodb://localhost/our_auto', {
     useUnifiedTopology: true,
@@ -53,14 +54,14 @@ module.exports = app;
 // });
 
 // const car = new Car({
-//     username: '1',
-//     mark: '1',
-//     model: '1',
-//     year: 1,
-//     price: 1,
-//     mileage: 1,
-//     engine: 1,
-//     transmission: '1'
+//     username: 'beq0',
+//     mark: 'Mercedes',
+//     model: 'E Class 2015',
+//     year: 2015,
+//     price: 190000,
+//     mileage: 15500,
+//     engine: 5.5,
+//     transmission: 'automatic'
 // });
 
 // car.save().then(res => {
