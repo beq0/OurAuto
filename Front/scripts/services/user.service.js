@@ -7,11 +7,18 @@ class UserService {
         return this._instance || (this._instance = new this());
     }
     
-    async addUser(user) {
+    async addUser(user, callback) {
         var request = new XMLHttpRequest();
         request.open('POST', USER_SERVICE_URL + '/addUser', true);
         request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-        request.onload = () => {
+        request.onload = function() {
+            if (this.status === 200) {
+                callback();
+            } else {
+
+            }
+        }
+        request.onerror = function() {
             console.log(this.responseText);
         }
         request.send(JSON.stringify(user));
@@ -34,7 +41,7 @@ class UserService {
             console.log(this.responseText);
         };
         request.onerror = function() {
-        // There was a connection error of some sort
+            console.log(this.responseText);
         };
         request.send();
     }
@@ -46,9 +53,30 @@ class UserService {
             console.log(this.responseText);
         };
         request.onerror = function() {
-        // There was a connection error of some sort
+            console.log(this.responseText);
         };
         request.send();
+    }
+
+    async authenticate(username, password, callback) {
+        const body = {
+            username: username,
+            password: password
+        }
+        var request = new XMLHttpRequest();
+        request.open('POST', USER_SERVICE_URL + '/authenticate', true);
+        request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        request.onload = function() {
+            if (this.status === 200) {
+                callback(JSON.parse(this.response).user);
+            } else {
+                console.log(this.responseText);
+            }
+        }
+        request.onerror = function() {
+            console.log(this.responseText);
+        }
+        request.send(JSON.stringify(body));
     }
 
     async addFriend(data) {

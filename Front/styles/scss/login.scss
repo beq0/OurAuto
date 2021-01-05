@@ -1,0 +1,62 @@
+$car-info-font: 'Quicksand', sans-serif;
+
+.login-container {
+    margin: auto;
+    font-family: $car-info-font;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+    height: 330px;
+    margin-top: 20px;
+}
+
+.login-label {
+	font-size: 17px;
+	color: grey;
+}
+
+.login-input {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	height: 65px;
+
+	& > input {
+        font-size: 15px;
+        font-family: $car-info-font;
+        width: 250px;
+		height: 30px;
+		padding: 0px 10px;
+		border: 2px solid #e2ea74;
+		border-radius: 5px;
+        transition: 0.3s;
+	}
+	& > input:focus {
+		outline: none !important;
+		border-color: #a6ad48;
+    	box-shadow: 0 0 5px #a6ad48;
+	}
+	& > input:hover {
+		outline: none !important;
+		border-color: #a6ad48;
+    	box-shadow: 0 0 5px #a6ad48;
+	}
+}
+
+#login-login-button {
+    width: 100px;
+}
+
+.login-register {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+#login-register-button {
+    width: 120px;
+}

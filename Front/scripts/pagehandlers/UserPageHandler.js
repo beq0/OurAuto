@@ -1,6 +1,3 @@
-const userService = UserService.getInstance();
-const carService = CarService.getInstance();
-
 function getUserInfoHTML(usrename) {
     // TODO: replace this with userService's findUser(username) response
     let userinfoHTML = 

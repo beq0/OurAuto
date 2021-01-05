@@ -36,23 +36,34 @@ class CarService {
         request.send();
     }
 
-    async getCars() {
+    async getCars(callback) {
         var request = new XMLHttpRequest();
         request.open('GET', CAR_SERVICE_URL + '/getCars', true);
         request.onload = function() {
-            console.log(this.responseText);
+            if (this.status === 200) {
+                callback(JSON.parse(this.responseText));
+            } else {
+                console.log(this.responseText);
+            }
         };
         request.onerror = function() {
-        // There was a connection error of some sort
+            console.log(this.responseText);
         };
         request.send();
     }
 
-    async filterCars(filter) {
+    async filterCars(filter, callback) {
         var request = new XMLHttpRequest();
         request.open('POST', CAR_SERVICE_URL + '/filterCars', true);
         request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         request.onload = function() {
+            if (this.status === 200) {
+                callback(JSON.parse(this.responseText));
+            } else {
+                console.log(this.responseText);
+            }
+        }
+        request.onerror = function() {
             console.log(this.responseText);
         }
         request.send(JSON.stringify(filter));
@@ -65,7 +76,7 @@ class CarService {
             console.log(this.responseText);
         };
         request.onerror = function() {
-        // There was a connection error of some sort
+            console.log(this.responseText);
         };
         request.send();
     }
@@ -77,7 +88,7 @@ class CarService {
             console.log(this.responseText);
         };
         request.onerror = function() {
-        // There was a connection error of some sort
+            console.log(this.responseText);
         };
         request.send();
     }

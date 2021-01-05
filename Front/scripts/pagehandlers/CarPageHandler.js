@@ -69,7 +69,7 @@ function carClicked(id) {
             <div id="ci-car-info-user-separator"></div>
 
             <div class="ci-user">
-                <div class="ci-user-name" onclick="userClicked(${userId})">
+                <div class="ci-user-name" onclick="UserComponent.userClicked(${userId})">
                     <div>
                         ${userName}
                     </div>

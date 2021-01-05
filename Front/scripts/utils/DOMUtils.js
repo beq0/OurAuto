@@ -14,4 +14,13 @@ class DOMUtils {
     static getValueById(id) {
         return document.getElementById(id).value;
     }
+
+    static bindEnterToElementById(id, func) {
+        document.getElementById(id).addEventListener("keyup", function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                func();
+            }
+        });
+    }
 }

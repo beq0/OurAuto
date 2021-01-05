@@ -4,9 +4,7 @@ let userName = 'ბექა';
 let userFamilyName = 'გუგულაშვილი';
 let userPhoneNumber = '+995555555555';
 
-let burgerMenuShown = false, avatarShown = false;
-
-let cars = [
+let tmp_cars = [
     {
         id: 1,
         image: 'https://bringatrailer.com/wp-content/uploads/2018/07/1990_bmw_325ic_hartge_h35_15312399737dff9f98764da15085606_10154762629479201_7529277224418374730_n.jpg?fit=940%2C627',

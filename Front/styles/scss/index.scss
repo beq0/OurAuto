@@ -49,7 +49,8 @@ body {
 	cursor: pointer;
     display: flex;
     align-items: center;
-    font-size: 16px;
+	font-size: 16px;
+	margin-right: 10px;
 }
 
 .user {
@@ -57,8 +58,9 @@ body {
 	margin-right: 10px;
 }
 
-#logout-button {
+button {
 	cursor: pointer;
+	outline: none;
 	color: grey;
 	font-size: 15px;
 	font-weight: bold;
@@ -71,6 +73,18 @@ body {
 	&:hover {
     	box-shadow: 0 0 5px #a6ad48;
 	}
+}
+
+#logout-button {
+	background-color: $menu-background-color;
+}
+
+#login-button {
+	margin-right: 10px;
+}
+
+#register-button {
+	width: 130px;
 }
 
 .burger-menu {
@@ -149,20 +163,18 @@ body {
 }
 
 #avatar-logout-button {
-	cursor: pointer;
-	color: grey;
-	font-size: 15px;
-	font-weight: bold;
-	width: 80px;
-	height: 30px;
 	background-color: $header-background-color;
-	border: 1px solid #e2ea74;
-	border-radius: 5px;
 	margin-bottom: 0;
-	transition: 0.3s;
-	&:hover {
-    	box-shadow: 0 0 5px #a6ad48;
-	}
+}
+
+#avatar-login-button {
+	background-color: $header-background-color;
+}
+
+#avatar-register-button {
+	background-color: $header-background-color;
+	margin-bottom: 0;
+	width: 130px;
 }
 
 @media only screen and (max-width: 600px) {

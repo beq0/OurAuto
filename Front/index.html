@@ -10,6 +10,10 @@
 	<noscript><link rel="stylesheet" href="styles/car_info.css"></noscript>
 	<link rel="preload" href="styles/user.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 	<noscript><link rel="stylesheet" href="styles/user.css"></noscript>
+	<link rel="preload" href="styles/login.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="styles/login.css"></noscript>
+	<link rel="preload" href="styles/register.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="styles/register.css"></noscript>
 </head>
 
 <body class="preload">
@@ -23,31 +27,29 @@
 				OurAuto
 			</div>
 			
-			<div class="user-info">
-				<div id="main-user" class="user" onclick="mainUserClicked()">
-				</div>
-				
-				<div>
-					<button id="logout-button">
-						გასვლა
-					</button>
-				</div>
+			<div id="user-info" class="user-info">
+				<button id="login-button" onclick="UserComponent.loginButtonClicked()">
+					შესვლა
+				</button>
+
+				<button id="register-button" onclick="UserComponent.registerButtonClicked()">
+					რეგისტრაცია
+				</button>
 			</div>
 
 			<div class="avatar">
-				<img src="./resources/user.png"  width="30px" height="30px" style="margin-right: 10px;" onclick="avatarClicked()">
+				<img src="./resources/user.png"  width="30px" height="30px" style="margin-right: 10px;" onclick="UserComponent.avatarClicked()">
 			</div>
 		</div>
 
 		<div id="avatar-content" class="hidden-modal">
-			<div id="avatar-user" class="avatar-content-item" onclick="avatarUserClicked()">
-			</div>
-			
-			<div>
-				<button id="avatar-logout-button" class="avatar-content-item">
-					გასვლა
-				</button>
-			</div>
+			<button id="avatar-login-button" class="avatar-content-item" onclick="UserComponent.loginButtonClicked()">
+				შესვლა
+			</button>
+
+			<button id="avatar-register-button" class="avatar-content-item" onclick="UserComponent.registerButtonClicked()">
+				რეგისტრაცია
+			</button>
 		</div>
 
 		<div class="menu-items">
@@ -63,7 +65,6 @@
 		</div>
 
 		<div class="content-separator">
-
 		</div>
 
 		<div class="filter-and-content">
@@ -73,15 +74,20 @@
 	</div>
 
 <script src="scripts/tmp_data.js"></script>
+<script src="scripts/utils/SessionUtils.js"></script>
 <script src="scripts/utils/DOMUtils.js"></script>
+<script src="scripts/utils/ObjectUtils.js"></script>
 <script src="scripts/utils/StringUtils.js"></script>
 <script src="scripts/utils/NumberUtils.js"></script>
 <script src="scripts/addresses.js"></script>
 <script src="scripts/services/user.service.js"></script>
 <script src="scripts/services/car.service.js"></script>
+<script src="scripts/componenthandlers/UserComponentHandler.js"></script>
 <script src="scripts/pagehandlers/MainPageHandler.js"></script>
 <script src="scripts/pagehandlers/CarPageHandler.js"></script>
 <script src="scripts/pagehandlers/UserPageHandler.js"></script>
+<script src="scripts/pagehandlers/LoginPageHandler.js"></script>
+<script src="scripts/pagehandlers/RegisterPageHandler.js"></script>
 <script src="scripts/index.js"></script>
 </body>
 

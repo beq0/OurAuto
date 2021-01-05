@@ -1,25 +1,40 @@
-function logoClicked() {
+function showMainPage() {
     DOMUtils.setScreenContent(`
     <div class="filter-and-content">
         <div class="filters">
             <div class="filter">
+                <div class="filter-label">მწარმოებელი:</div>
+                <input type="text" id="filter-car-mark">
+            </div>
+
+            <div class="filter">
                 <div class="filter-label">მოდელი:</div>
                 <input type="text" id="filter-car-model">
+            </div>
+
+            <div class="filter">
+                <div class="filter-label">საწყისი ფასი:</div>
+                <input type="number" id="filter-car-startPrice">
+            </div>
+        
+            <div class="filter">
+                <div class="filter-label">საბოლოო ფასი:</div>
+                <input type="number" id="filter-car-endPrice">
             </div>
         
             <div class="filter">
                 <div class="filter-label">საწყისი წელი:</div>
-                <input type="number" id="filter-car-year-lower">
+                <input type="number" id="filter-car-startYear">
             </div>
         
             <div class="filter">
                 <div class="filter-label">საბოლოო წელი:</div>
-                <input type="number" id="filter-car-year-upper">
+                <input type="number" id="filter-car-endYear">
             </div>
         
             <div class="filter">
                 <div class="filter-label">ძრავი:</div>
-                <input type="number" id="filter-car-motor">
+                <input type="number" id="filter-car-engine" step="0.01">
             </div>
         
             <div class="filter">
@@ -28,7 +43,7 @@ function logoClicked() {
             </div>
         
             <div class="filter" id="filter-button" onclick="filterButtonClicked()">
-                <img src="https://icon-library.com/images/white-search-icon-transparent-background/white-search-icon-transparent-background-4.jpg"
+                <img src="C:/Users/AzRy/Desktop/OurAuto/Front/resources/search.jpg"
                     width="17px" height="17px">
                 <div>გაფილტრვა</div>
             </div>
@@ -39,35 +54,20 @@ function logoClicked() {
         </div>
     </div>
     `);
+    bindEntersOnMainPage();
 
-    DOMUtils.setInnerHTML("content", getFilteredCarsHTML(null));
-}
-
-function filterButtonClicked() {
-    filter = {
-        model: DOMUtils.getValueById('filter-car-model'),
-        yearLower: parseInt(DOMUtils.getValueById('filter-car-year-lower')),
-        yearUpper: parseInt(DOMUtils.getValueById('filter-car-year-upper')),
-        motor: parseFloat(DOMUtils.getValueById('filter-car-motor')),
-        transmission: DOMUtils.getValueById('filter-car-transmission')
-    }
-    DOMUtils.setInnerHTML("content", getFilteredCarsHTML(filter));
-}
-
-function getFilteredCarsHTML(filter) {
-    carsListHTML = '';
-    let filteredCars = filter === null ? cars : cars.filter(car => {
-        return (StringUtils.isEmpty(filter.model) ? true : car.model.includes(filter.model)) &&
-        (!filter.yearLower && filter.yearLower !== 0 ? true : car.year >= filter.yearLower) &&
-        (!filter.yearUpper && filter.yearUpper !== 0 ? true : car.year <= filter.yearUpper) &&
-        (!filter.motor && filter.motor !== 0 ? true : car.motor === filter.motor) && 
-        (StringUtils.isEmpty(filter.transmission) ? true : car.transmission.includes(filter.transmission))
+    carService.getCars((cars) => {
+        DOMUtils.setInnerHTML("content", getCarsHTML(cars));
     });
-    filteredCars.forEach(car => {
+}
+
+function getCarsHTML(cars) {
+    carsListHTML = '';
+    cars.forEach(car => {
         carsListHTML += 
         `
         <div class="car">
-            <img class="car-img" src="${car.image}" onclick="carClicked(${car.id})">
+            <img class="car-img" src="${car.imagePath}" onclick="carClicked(${car.id})">
 
             <div class="car-info">
                 <div class="car-main-info">
@@ -86,7 +86,7 @@ function getFilteredCarsHTML(filter) {
                     </div>
 
                     <div>
-                        ძრავი: <span>${car.motor}</span>
+                        ძრავი: <span>${car.engine}</span>
                     </div>
                 
                     <div>
@@ -106,4 +106,34 @@ function getFilteredCarsHTML(filter) {
         `
     });
     return carsListHTML;
+}
+
+function filterButtonClicked() {
+    filter = {
+        mark: DOMUtils.getValueById('filter-car-mark'),
+        model: DOMUtils.getValueById('filter-car-model'),
+        startPrice: parseInt(DOMUtils.getValueById('filter-car-startPrice')),
+        endPrice: parseInt(DOMUtils.getValueById('filter-car-endPrice')),
+        startYear: parseInt(DOMUtils.getValueById('filter-car-startYear')),
+        endYear: parseInt(DOMUtils.getValueById('filter-car-endYear')),
+        engine: parseFloat(DOMUtils.getValueById('filter-car-engine')),
+        transmission: DOMUtils.getValueById('filter-car-transmission')
+    }
+    carService.filterCars(filter, (filteredCars) => {
+        DOMUtils.setInnerHTML("content", getCarsHTML(filteredCars));
+    });
+}
+
+function bindEntersOnMainPage() {
+    function executeFilter() {
+        document.getElementById('filter-button').click();
+    }
+    DOMUtils.bindEnterToElementById('filter-car-mark', executeFilter);
+    DOMUtils.bindEnterToElementById('filter-car-model', executeFilter);
+    DOMUtils.bindEnterToElementById('filter-car-startPrice', executeFilter);
+    DOMUtils.bindEnterToElementById('filter-car-endPrice', executeFilter);
+    DOMUtils.bindEnterToElementById('filter-car-startYear', executeFilter);
+    DOMUtils.bindEnterToElementById('filter-car-endYear', executeFilter);
+    DOMUtils.bindEnterToElementById('filter-car-engine', executeFilter);
+    DOMUtils.bindEnterToElementById('filter-car-transmission', executeFilter);
 }

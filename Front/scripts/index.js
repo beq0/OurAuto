@@ -1,21 +1,14 @@
+function logoClicked() {
+    showMainPage();
+}
+
+let userLoggedIn = false;
+const userService = UserService.getInstance();
+const carService = CarService.getInstance();
+
 window.onload = () => {
-    // DOMUtils.setInnerHTML("content", getFilteredCarsHTML(null));
-    logoClicked();
-    DOMUtils.setInnerHTML("main-user", userName + " " + userFamilyName);
-    DOMUtils.setInnerHTML("avatar-user", userName + " " + userFamilyName);
+    showMainPage();
     removePreload();
-}
-
-function mainUserClicked() {
-    DOMUtils.setScreenContent(getUserInfoHTML(null));
-}
-
-function avatarUserClicked() {
-    DOMUtils.setScreenContent(getUserInfoHTML(null));
-}
-
-function userClicked(userId) {
-    DOMUtils.setScreenContent(getUserInfoHTML(userId));
 }
 
 function removePreload() {
@@ -25,6 +18,8 @@ function removePreload() {
 function mainMenuItemClicked() {
     logoClicked();
 }
+
+let burgerMenuShown = false, avatarShown = false;
 
 function burgerMenuClicked() {
     if (avatarShown) {
@@ -40,17 +35,4 @@ function burgerMenuClicked() {
         burgerMenu.style.left = '0px';
     }
     burgerMenuShown = !burgerMenuShown;
-}
-
-function avatarClicked() {
-    if (burgerMenuShown) {
-        burgerMenuClicked();
-    }
-    let avatar = document.getElementById("avatar-content");
-    if (avatarShown) {
-        avatar.style.right = '-230px';
-    } else {
-        avatar.style.right = '0px';
-    }
-    avatarShown = !avatarShown;   
 }
