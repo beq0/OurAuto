@@ -57,10 +57,12 @@ class UserComponent {
     
     static loginButtonClicked() {
         showLoginPage();
+        this.closeAvatar();
     }
     
     static registerButtonClicked() {
         showRegisterPage();
+        this.closeAvatar();
     }
     
     static authenticate() {
@@ -70,18 +72,26 @@ class UserComponent {
     static logoutButtonClicked() {
         SessionUtils.removeUsername();
         this.userHasLoggedOut();
+        this.closeAvatar();
     }
     
     static mainUserClicked() {
-        DOMUtils.setScreenContent(getUserInfoHTML(null));
+        DOMUtils.setScreenContent(UserPage.getUserInfoHTML(SessionUtils.getUsername(), true));
     }
     
     static avatarUserClicked() {
-        DOMUtils.setScreenContent(getUserInfoHTML(null));
+        DOMUtils.setScreenContent(UserPage.getUserInfoHTML(SessionUtils.getUsername(), true));
+        this.closeAvatar();
     }
     
-    static userClicked(userId) {
-        DOMUtils.setScreenContent(getUserInfoHTML(userId));
+    static userClicked(username) {
+        DOMUtils.setScreenContent(UserPage.getUserInfoHTML(username, false));
+    }
+
+    static closeAvatar() {
+        if (avatarShown) {
+            this.avatarClicked();
+        }
     }
 
     static avatarClicked() {

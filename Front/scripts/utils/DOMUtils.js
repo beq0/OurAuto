@@ -15,6 +15,10 @@ class DOMUtils {
         return document.getElementById(id).value;
     }
 
+    static getFileById(id) {
+        return document.getElementById(id).files[0];
+    }
+
     static bindEnterToElementById(id, func) {
         document.getElementById(id).addEventListener("keyup", function(event) {
             if (event.key === 'Enter') {
@@ -22,5 +26,13 @@ class DOMUtils {
                 func();
             }
         });
+    }
+
+    static showModal(modal) {
+        document.getElementById('modal-container').innerHTML = modal;
+    }
+
+    static exitModal() {
+        document.getElementById('modal-container').innerHTML = '';
     }
 }

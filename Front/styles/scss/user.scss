@@ -36,6 +36,24 @@ $menu-background-color: #ffc800;
 }
 
 
+.u-add-car {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.u-add-car-button {
+    cursor: pointer;
+    background-color: #ffc800;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: #80807f;
+    font-weight: bold;
+    width: 170px;
+    text-align: center;
+}
+
+
 .u-contact-buttons {
     display: flex;
     margin-top: 10px;
@@ -78,6 +96,11 @@ $menu-background-color: #ffc800;
     }
 
     .u-contact-buttons {
+        margin-left: 0px;
+        justify-content: center;
+    }
+
+    .u-add-car {
         margin-left: 0px;
         justify-content: center;
     }

@@ -14,10 +14,15 @@
 	<noscript><link rel="stylesheet" href="styles/login.css"></noscript>
 	<link rel="preload" href="styles/register.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 	<noscript><link rel="stylesheet" href="styles/register.css"></noscript>
+	<link rel="preload" href="styles/car_modal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="styles/car_modal.css"></noscript>
 </head>
 
 <body class="preload">
 	<div class="main-container">
+		<div id="modal-container">	
+		</div>
+
 		<div class="header-info">
 			<div class="burger-menu">
 				<img id="burger-menu-img" src="./resources/burger.png" width="30px" height="30px" style="margin-left: 10px;" onclick="burgerMenuClicked()">
@@ -82,12 +87,13 @@
 <script src="scripts/addresses.js"></script>
 <script src="scripts/services/user.service.js"></script>
 <script src="scripts/services/car.service.js"></script>
-<script src="scripts/componenthandlers/UserComponentHandler.js"></script>
-<script src="scripts/pagehandlers/MainPageHandler.js"></script>
-<script src="scripts/pagehandlers/CarPageHandler.js"></script>
-<script src="scripts/pagehandlers/UserPageHandler.js"></script>
-<script src="scripts/pagehandlers/LoginPageHandler.js"></script>
-<script src="scripts/pagehandlers/RegisterPageHandler.js"></script>
+<script src="scripts/components/UserComponent.js"></script>
+<script src="scripts/pages/MainPage.js"></script>
+<script src="scripts/pages/CarPage.js"></script>
+<script src="scripts/pages/UserPage.js"></script>
+<script src="scripts/pages/LoginPage.js"></script>
+<script src="scripts/pages/RegisterPage.js"></script>
+<script src="scripts/components/CarModal.js"></script>
 <script src="scripts/index.js"></script>
 </body>
 

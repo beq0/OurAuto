@@ -7,14 +7,28 @@ class CarService {
         return this._instance || (this._instance = new this());
     }
     
-    async addCar(car) {
+    async addCar(car, callback) {
         var request = new XMLHttpRequest();
         request.open('POST', CAR_SERVICE_URL + '/addCar', true);
         request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-        request.onload = () => {
-            console.log(this.responseText);
+        request.onload = function() {
+            if (this.status === 200) {
+                callback();
+            } else {
+                console.error(this.responseText);
+            }
         }
-        request.send(JSON.stringify(car));
+        request.onerror = function() {
+            console.error(this.response);
+        }
+        if (car.image) {
+            this.convertToBase64(car.image, (base64Image) => {
+                car.image = base64Image;
+                request.send(JSON.stringify(car));
+            });
+        } else {
+            request.send(JSON.stringify(car));
+        }
     }
     
     async editCar(car) {
@@ -92,4 +106,12 @@ class CarService {
         };
         request.send();
     }
+
+    convertToBase64(file, callback) {
+        let reader = new FileReader();
+        reader.onloadend = function (e) {
+            callback(reader.result);
+        };
+        reader.readAsDataURL(file);
+    };
 }

@@ -17,9 +17,16 @@ function removePreload() {
 
 function mainMenuItemClicked() {
     logoClicked();
+    closeBurgerMenu();
 }
 
 let burgerMenuShown = false, avatarShown = false;
+
+function closeBurgerMenu() {
+    if (burgerMenuShown) {
+        burgerMenuClicked();
+    }
+}
 
 function burgerMenuClicked() {
     if (avatarShown) {
