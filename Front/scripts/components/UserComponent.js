@@ -76,16 +76,16 @@ class UserComponent {
     }
     
     static mainUserClicked() {
-        DOMUtils.setScreenContent(UserPage.getUserInfoHTML(SessionUtils.getUsername(), true));
+        UserPage.showUserPage(SessionUtils.getUsername(), true);
     }
     
     static avatarUserClicked() {
-        DOMUtils.setScreenContent(UserPage.getUserInfoHTML(SessionUtils.getUsername(), true));
+        UserPage.showUserPage(SessionUtils.getUsername(), true);
         this.closeAvatar();
     }
     
     static userClicked(username) {
-        DOMUtils.setScreenContent(UserPage.getUserInfoHTML(username, false));
+        UserPage.showUserPage(username, false);
     }
 
     static closeAvatar() {

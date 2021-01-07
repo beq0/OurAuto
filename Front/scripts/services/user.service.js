@@ -47,15 +47,21 @@ class UserService {
     }
 
     async findUser(username) {
-        var request = new XMLHttpRequest();
-        request.open('GET', USER_SERVICE_URL + '/findUser/' + username, true);
-        request.onload = function() {
-            console.log(this.responseText);
-        };
-        request.onerror = function() {
-            console.log(this.responseText);
-        };
-        request.send();
+        return new Promise((resolve, reject) => {
+            var request = new XMLHttpRequest();
+            request.open('GET', USER_SERVICE_URL + '/findUser/' + username, true);
+            request.onload = function() {
+                if (this.status === 200) {
+                    resolve(JSON.parse(this.responseText));
+                } else {
+                    reject(new Error(this.responseText));
+                }
+            };
+            request.onerror = function() {
+                reject(new Error(this.responseText));
+            };
+            request.send();
+        });
     }
 
     async authenticate(username, password, callback) {

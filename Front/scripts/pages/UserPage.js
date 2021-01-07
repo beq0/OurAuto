@@ -3,8 +3,7 @@ class UserPage {
 
     }
 
-    static getUserInfoHTML(username, isMainUser) {
-        // TODO: replace this with userService's findUser(username) response
+    static getUserInfoHTML(user, userCars, isMainUser) {
         let userinfoHTML = 
         `
         <div class="u-container">
@@ -15,19 +14,15 @@ class UserPage {
     
                 <div class="u-main-info">
                     <div class="u-info u-username">
-                        ${userUsername}
+                        ${user.username}
                     </div>
                 
                     <div class="u-info">
-                        ${userName}
-                    </div>
-                    
-                    <div class="u-info">
-                        ${userFamilyName}
+                        ${user.name}
                     </div>
                 
                     <div class="u-info">
-                        ${userPhoneNumber}
+                        ${user.mobile}
                     </div>
                 </div>
             </div>
@@ -54,20 +49,23 @@ class UserPage {
                     ${isMainUser ? 'ჩემი' : 'მომხმარებლის'} განცხადებები
                 </div>`;
                 
-                // TODO: replace this with car's service's getCarsForUser response
-                tmp_cars.forEach(car => {
+                userCars.forEach(car => {
                 userinfoHTML += 
                 `
                 <div class="u-car">
-                    <img class="u-car-img" src="${car.image}" onclick="carClicked(${car.id})">
+                    <img class="u-car-img" src="${car.imagePath}" onclick="CarPage.carClicked('${car._id}')">
         
                     <div class="u-car-info">
                         <div class="u-car-main-info">
                             <div class="u-car-price">
                                 <span>${NumberUtils.getNumWithCommas(car.price)}</span> ₾
                             </div>
+
+                            <div class="u-car-model" onclick="CarPage.carClicked('${car._id}')">
+                                <span>${car.mark}</span>
+                            </div>
         
-                            <div class="u-car-model" onclick="carClicked(${car.id})">
+                            <div class="u-car-model" onclick="CarPage.carClicked('${car._id}')">
                                 <span>${car.model}</span>
                             </div>
                         </div>
@@ -78,7 +76,7 @@ class UserPage {
                             </div>
         
                             <div>
-                                ძრავი: <span>${car.motor}</span>
+                                ძრავი: <span>${car.engine}</span>
                             </div>
                         
                             <div>
@@ -87,10 +85,6 @@ class UserPage {
         
                             <div>
                                 გარბენი: <span>${NumberUtils.getNumWithCommas(car.mileage)}</span> კმ
-                            </div>
-        
-                            <div>
-                                ტექ. დათვალიერება: <span>${car.techView ? 'კი' : 'არა'}</span>
                             </div>
                         </div>
                     </div>
@@ -103,6 +97,17 @@ class UserPage {
         </div>
         `
         return userinfoHTML;
+    }
+
+    static showUserPage(username, isMainUser) {
+        Promise.all([
+            userService.findUser(username),
+            carService.getCarsForUser(username)
+        ]).then((userInfo) => {
+            DOMUtils.setScreenContent(this.getUserInfoHTML(userInfo[0], userInfo[1], isMainUser));
+        }).catch((err) => {
+            console.error(err);
+        });
     }
     
     static addCarButtonClicked() {

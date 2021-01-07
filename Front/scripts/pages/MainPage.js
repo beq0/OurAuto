@@ -67,7 +67,7 @@ function getCarsHTML(cars) {
         carsListHTML += 
         `
         <div class="car">
-            <img class="car-img" src="${car.imagePath}" onclick="carClicked(${car.id})">
+            <img class="car-img" src="${car.imagePath}" onclick="CarPage.carClicked('${car._id}')">
 
             <div class="car-info">
                 <div class="car-main-info">
@@ -75,7 +75,7 @@ function getCarsHTML(cars) {
                         <span>${NumberUtils.getNumWithCommas(car.price)}</span> ₾
                     </div>
 
-                    <div class="car-model" onclick="carClicked(${car.id})">
+                    <div class="car-model" onclick="CarPage.carClicked('${car._id}')">
                         <span>${car.model}</span>
                     </div>
                 </div>
@@ -95,10 +95,6 @@ function getCarsHTML(cars) {
 
                     <div>
                         გარბენი: <span>${NumberUtils.getNumWithCommas(car.mileage)}</span> კმ
-                    </div>
-
-                    <div>
-                        ტექ. დათვალიერება: <span>${car.techView ? 'კი' : 'არა'}</span>
                     </div>
                 </div>
             </div>

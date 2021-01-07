@@ -41,6 +41,7 @@ module.exports.editUser = (req, res) => {
 
 module.exports.getUsers = (req, res) => {
     User.find().then((users) => {
+        users.forEach(user => delete user.password);
         res.status(200).json(users);
     }).catch((err) => {
         res.status(500).json({message: err});
@@ -56,6 +57,7 @@ module.exports.findUser = (req, res) => {
         username: req.params.username
     }
     User.findOne(userToFind).then((user) => {
+        delete user.password;
         if (user) res.status(200).json(user);
         else res.status(500).json({message: `Could not find User: ${userToFind}`});
     }).catch((err) => {

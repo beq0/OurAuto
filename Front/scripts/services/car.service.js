@@ -83,28 +83,58 @@ class CarService {
         request.send(JSON.stringify(filter));
     }
 
-    async findCar(_id) {
-        var request = new XMLHttpRequest();
-        request.open('GET', CAR_SERVICE_URL + '/findCar/' + _id, true);
-        request.onload = function() {
-            console.log(this.responseText);
-        };
-        request.onerror = function() {
-            console.log(this.responseText);
-        };
-        request.send();
+    async findCar(carId) {
+        return new Promise((resolve, reject) => {
+            var request = new XMLHttpRequest();
+            request.open('GET', CAR_SERVICE_URL + '/findCar/' + carId, true);
+            request.onload = function() {
+                if (this.status === 200) {
+                    resolve(JSON.parse(this.responseText));
+                } else {
+                    reject(new Error(this.responseText));
+                }
+            };
+            request.onerror = function() {
+                reject(new Error(this.responseText));
+            };
+            request.send();
+        });
     }
 
     async getCarsForUser(username) {
-        var request = new XMLHttpRequest();
-        request.open('GET', CAR_SERVICE_URL + '/getCarsForUser/' + username, true);
-        request.onload = function() {
-            console.log(this.responseText);
-        };
-        request.onerror = function() {
-            console.log(this.responseText);
-        };
-        request.send();
+        return new Promise((resolve, reject) => {
+            var request = new XMLHttpRequest();
+            request.open('GET', CAR_SERVICE_URL + '/getCarsForUser/' + username, true);
+            request.onload = function() {
+                if (this.status === 200) {
+                    resolve(JSON.parse(this.responseText));
+                } else {
+                    reject(new Error(this.responseText));
+                }
+            };
+            request.onerror = function() {
+                reject(new Error(this.responseText));
+            };
+            request.send();
+        });
+    }
+
+    async getSimilarCars(car) {
+        return new Promise((resolve, reject) => {
+            var request = new XMLHttpRequest();
+            request.open('GET', CAR_SERVICE_URL + '/getCars', true);
+            request.onload = function() {
+                if (this.status === 200) {
+                    resolve(JSON.parse(this.responseText));
+                } else {
+                    reject(new Error(this.responseText));
+                }
+            };
+            request.onerror = function() {
+                reject(new Error(this.responseText));
+            };
+            request.send();
+        });
     }
 
     convertToBase64(file, callback) {
