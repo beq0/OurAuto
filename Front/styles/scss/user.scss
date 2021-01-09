@@ -85,10 +85,36 @@ $menu-background-color: #ffc800;
     color: white;
 }
 
+@media only screen and (max-width: 300px) {
+    .u-contact-button {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .u-contact-buttons {
+       flex-direction: column;
+       margin-top: 0px;
+       align-items: center;
+    }    
+    
+    .u-contact-button {
+        margin-top: 10px;
+        margin-right: 0px;
+        width: 200px;
+        justify-content: center;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     .u-u {
         flex-direction: column;
         align-items: center;
+        margin-left: 0px;
+    }
+    
+    .u-img {
+        margin-right: 0px;
     }
 
     .u-main-info {
@@ -155,18 +181,45 @@ $menu-background-color: #ffc800;
 	color: grey;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 350px) {
+    .u-car-general-info {
+        font-size: 11px;
+    }
+}
 
+@media only screen and (min-width: 350px) {
+    .u-car-general-info {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .u-car-img {
+        width: 154px;
+        height: 110px;
+    }
+}
+
+@media only screen and (min-width: 400px) {
     .u-car-img {
         width: 200px;
         height: 140px;
     }
+}
 
+@media only screen and (max-width: 600px) {
     .u-car-main-info {
         font-size: 16px;
     }
+}
 
+@media only screen and (min-width: 600px) {
+    .u-car-img {
+        width: $car-img-width;
+        height: $car-img-height;
+    }
+    
     .u-car-general-info {
-        font-size: 13px;
+        font-size: 15px;
     }
 }

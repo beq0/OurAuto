@@ -131,7 +131,45 @@
   box-shadow: 0 0 5px red;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 400px) {
+  .car-modal-close {
+    width: 230px;
+    margin: unset;
+  }
+
+  .car-modal-label {
+    font-size: 15px;
+  }
+
+  .car-modal {
+    width: 250px;
+    height: 550px;
+    margin-left: -125px;
+    margin-top: -275px;
+  }
+
+  .car-modal-field {
+    flex-direction: column;
+    width: 230px;
+  }
+
+  .car-modal-field-label {
+    font-size: 13px;
+  }
+
+  .car-modal-field-input {
+    font-size: 14px;
+  }
+
+  #car-modal-image {
+    width: 230px;
+  }
+
+  #car-modal-exit {
+    margin-top: 5px;
+  }
+}
+@media only screen and (min-width: 400px) {
   .car-modal-close {
     width: 310px;
   }
@@ -161,6 +199,38 @@
 
   #car-modal-image::before {
     font-size: 12px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .car-modal-close {
+    width: 360px;
+  }
+
+  .car-modal {
+    width: 400px;
+    height: 500px;
+    margin-left: -200px;
+    margin-top: -250px;
+  }
+
+  .car-modal-label {
+    font-size: 20px;
+  }
+
+  .car-modal-field {
+    width: 360px;
+  }
+
+  .car-modal-field-label {
+    font-size: unset;
+  }
+
+  .car-modal-field-input {
+    font-size: 15px;
+  }
+
+  #car-modal-image::before {
+    font-size: 14px;
   }
 }
 

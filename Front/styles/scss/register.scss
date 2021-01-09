@@ -48,3 +48,15 @@ $car-info-font: 'Quicksand', sans-serif;
 #register-register-button {
     width: 150px;
 }
+
+@media only screen and (max-width: 350px) {
+    .register-input {
+		& > input {
+			width: 200px;
+		}
+	}
+
+	.register-label {
+		font-size: 15px;
+	}
+}

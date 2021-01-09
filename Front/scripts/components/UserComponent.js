@@ -84,6 +84,7 @@ class UserComponent {
         this.closeAvatar();
     }
     
+    // mainly called from Car Page (from similar cars)
     static userClicked(username) {
         UserPage.showUserPage(username, false);
     }

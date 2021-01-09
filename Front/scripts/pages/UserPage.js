@@ -100,6 +100,9 @@ class UserPage {
     }
 
     static showUserPage(username, isMainUser) {
+        if (!isMainUser) {
+            isMainUser = SessionUtils.getUsername() == username;
+        }
         Promise.all([
             userService.findUser(username),
             carService.getCarsForUser(username)

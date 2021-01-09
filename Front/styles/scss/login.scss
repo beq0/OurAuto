@@ -60,3 +60,15 @@ $car-info-font: 'Quicksand', sans-serif;
 #login-register-button {
     width: 120px;
 }
+
+@media only screen and (max-width: 350px) {
+    .login-input {
+		& > input {
+			width: 200px;
+		}
+	}
+
+	.login-label {
+		font-size: 15px;
+	}
+}

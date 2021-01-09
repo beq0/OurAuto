@@ -94,14 +94,69 @@
   font-style: italic;
 }
 
-@media only screen and (max-width: 600px) {
-  .ci-main-container {
+@media only screen and (max-width: 350px) {
+  .ci-car-img > img {
+    width: 210px;
+    height: 150px;
+  }
+
+  .ci-main-info {
+    width: 220px;
+    font-size: 13px;
+  }
+
+  .ci-info {
+    width: 220px;
+  }
+}
+@media only screen and (min-width: 350px) {
+  .ci-car-img > img {
+    width: 280px;
+    height: 200px;
+  }
+
+  .ci-main-info {
+    width: 280px;
+    font-size: 14px;
+  }
+
+  .ci-info {
+    width: 280px;
+  }
+}
+@media only screen and (max-width: 468px) {
+  .ci-car-info {
+    padding: 5px 10px;
+  }
+
+  .ci-main-info {
+    padding: 5px 10px;
     flex-direction: column;
   }
 
+  .ci-info {
+    flex-direction: column;
+  }
+}
+@media only screen and (min-width: 468px) {
   .ci-car-img > img {
-    width: 400px;
-    height: 270px;
+    width: 350px;
+    height: 250px;
+  }
+
+  .ci-main-info {
+    width: 350px;
+    font-size: 15px;
+  }
+
+  .ci-info {
+    width: 350px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .ci-car-img > img {
+    width: 420px;
+    height: 300px;
   }
 
   .ci-main-info {
@@ -111,6 +166,38 @@
 
   .ci-info {
     width: 450px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .ci-car-img > img {
+    width: 560px;
+    height: 400px;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .ci-main-container {
+    flex-direction: column;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .ci-car-img > img {
+    width: 630px;
+    height: 450px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .ci-car-img > img {
+    width: 700px;
+    height: 500px;
+  }
+
+  .ci-main-info {
+    width: 550px;
+    font-size: 17px;
+  }
+
+  .ci-info {
+    width: 550px;
   }
 }
 .ci-user-similar-cars-separator {
@@ -160,6 +247,17 @@
   color: grey;
 }
 
+@media only screen and (max-width: 350px) {
+  .ci-similar-car-general-info {
+    font-size: 11px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .ci-similar-car-img {
+    width: 154px;
+    height: 110px;
+  }
+}
 @media only screen and (max-width: 600px) {
   .ci-user-similar-cars-separator {
     display: block;
@@ -170,7 +268,8 @@
     margin: auto;
     margin-bottom: 10px;
   }
-
+}
+@media only screen and (max-width: 992px) {
   .ci-similar-cars {
     margin-left: 20px;
   }
