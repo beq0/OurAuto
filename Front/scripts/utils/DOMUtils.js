@@ -35,4 +35,12 @@ class DOMUtils {
     static exitModal() {
         document.getElementById('modal-container').innerHTML = '';
     }
+
+    static setOnClickById(id, func) {
+        document.getElementById(id).onclick = func;
+    }
+
+    static setOnClickByClass(className, func) {
+        document.querySelector('.' + className).onclick = func;
+    }
 }

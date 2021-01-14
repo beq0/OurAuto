@@ -1,5 +1,5 @@
 function logoClicked() {
-    showMainPage();
+    MainPage.showMainPage();
 }
 
 let userLoggedIn = false;
@@ -7,7 +7,7 @@ const userService = UserService.getInstance();
 const carService = CarService.getInstance();
 
 window.onload = () => {
-    showMainPage();
+    MainPage.showMainPage();
     removePreload();
 }
 

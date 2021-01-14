@@ -6,73 +6,85 @@ class UserComponent {
     static userHasLoggedIn(user = null) {
         DOMUtils.setInnerHTML('user-info', 
         `
-        <div id="main-user" class="user" onclick="UserComponent.mainUserClicked()">
+        <div id="main-user" class="user">
             ${user.username}
         </div>
         
         <div>
-            <button id="logout-button" onclick="UserComponent.logoutButtonClicked()">
+            <button id="logout-button">
                 გასვლა
             </button>
         </div>
         `);
+
+        DOMUtils.setOnClickById('main-user', this.mainUserClicked);
+        DOMUtils.setOnClickById('logout-button', this.logoutButtonClicked);
     
         DOMUtils.setInnerHTML('avatar-content',
         `
-        <div id="avatar-user" class="avatar-content-item" onclick="UserComponent.avatarUserClicked()">
+        <div id="avatar-user" class="avatar-content-item">
             ${user.username}
         </div>
         
         <div>
-            <button id="avatar-logout-button" class="avatar-content-item" onclick="UserComponent.logoutButtonClicked()">
+            <button id="avatar-logout-button" class="avatar-content-item">
                 გასვლა
             </button>
         </div>
         `);
+        
+        DOMUtils.setOnClickById('avatar-user', this.avatarUserClicked);
+        DOMUtils.setOnClickById('avatar-logout-button', this.logoutButtonClicked);
     }
     
     static userHasLoggedOut() {
         DOMUtils.setInnerHTML('user-info', 
         `
-        <button id="login-button" onclick="UserComponent.loginButtonClicked()">
+        <button id="login-button">
             შესვლა
         </button>
 
-        <button id="register-button" onclick="UserComponent.registerButtonClicked()">
+        <button id="register-button">
             რეგისტრაცია
         </button>
         `);
+
+        DOMUtils.setOnClickById('login-button', this.loginButtonClicked);
+        DOMUtils.setOnClickById('register-button', this.registerButtonClicked);
     
         DOMUtils.setInnerHTML('avatar-content',
         `
-        <button id="avatar-login-button" class="avatar-content-item" onclick="UserComponent.loginButtonClicked()">
+        <button id="avatar-login-button" class="avatar-content-item">
             შესვლა
         </button>
 
-        <button id="avatar-register-button" class="avatar-content-item" onclick="UserComponent.registerButtonClicked()">
+        <button id="avatar-register-button" class="avatar-content-item">
             რეგისტრაცია
         </button>
         `);
+
+        DOMUtils.setOnClickById('avatar-login-button', this.loginButtonClicked);
+        DOMUtils.setOnClickById('avatar-register-button', this.registerButtonClicked);
     }
     
     static loginButtonClicked() {
-        showLoginPage();
-        this.closeAvatar();
+        LoginPage.showLoginPage();
+        UserComponent.closeAvatar();
     }
     
     static registerButtonClicked() {
-        showRegisterPage();
-        this.closeAvatar();
+        RegisterPage.showRegisterPage();
+        UserComponent.closeAvatar();
     }
     
     static authenticate() {
-        this.userHasLoggedIn({username: 'beq0'});
+        UserComponent.userHasLoggedIn({username: 'beq0'});
     }
     
     static logoutButtonClicked() {
         SessionUtils.removeUsername();
-        this.userHasLoggedOut();
-        this.closeAvatar();
+        UserComponent.userHasLoggedOut();
+        UserComponent.closeAvatar();
     }
     
     static mainUserClicked() {
@@ -81,7 +93,7 @@ class UserComponent {
     
     static avatarUserClicked() {
         UserPage.showUserPage(SessionUtils.getUsername(), true);
-        this.closeAvatar();
+        UserComponent.closeAvatar();
     }
     
     // mainly called from Car Page (from similar cars)

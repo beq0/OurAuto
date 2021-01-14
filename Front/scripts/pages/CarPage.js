@@ -73,7 +73,7 @@ class CarPage {
                 <div id="ci-car-info-user-separator"></div>
     
                 <div class="ci-user">
-                    <div class="ci-user-name" onclick="UserComponent.userClicked(${carUser.username})">
+                    <div class="ci-user-name">
                         <div>
                             ${carUser.username}
                         </div>
@@ -145,6 +145,8 @@ class CarPage {
         html += similar_cars_html;
         for (let i = 0; i < 2; i++) html += '</div>';
         DOMUtils.setScreenContent(html);
+
+        DOMUtils.setOnClickByClass('ci-user-name', () => UserComponent.userClicked(carUser.username));
     } 
 
     static carClicked(carId) {

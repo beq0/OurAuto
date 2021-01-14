@@ -10,7 +10,7 @@ class CarModal {
                 <form class="car-modal">
                     <div class="car-modal-close">
                         <div class="car-modal-label">მანქანის დამატება</div>
-                        <img id="car-modal-close-button" src="./resources/close-modal.png" onclick="CarModal.exitCarModal()">
+                        <img id="car-modal-close-button" src="./resources/close-modal.png">
                     </div>
         
                     <div class="car-modal-field">
@@ -63,13 +63,16 @@ class CarModal {
                     <div id="car-modal-buttons" class="car-modal-field">
                         <input id="car-modal-submit" class="car-modal-field-input" type="submit" value="დამატება">
         
-                        <input id="car-modal-exit" class="car-modal-field-input" type="button" onclick="CarModal.exitCarModal()" value="დახურვა">
+                        <input id="car-modal-exit" class="car-modal-field-input" type="button" value="დახურვა">
                     </div>
                 </form>
             </div>
             `
         );
         document.querySelector('.car-modal').addEventListener('submit', (e) => this.carModalSubmited(e));
+        
+        DOMUtils.setOnClickById('car-modal-close-button', this.exitCarModal);
+        DOMUtils.setOnClickById('car-modal-exit', this.exitCarModal);
     }
 
     static carModalSubmited(e) {
@@ -90,9 +93,13 @@ class CarModal {
             price: DOMUtils.getValueById('car-modal-price'),
             image: image
         }
-        carService.addCar(car, () => {
-            this.exitCarModal();
-        });
+        carService.addCar(car)
+            .then(() => {
+                this.exitCarModal();
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     }
 
     static exitCarModal() {
