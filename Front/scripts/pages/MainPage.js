@@ -6,10 +6,16 @@ class MainPage {
     static showMainPage() {
         DOMUtils.setScreenContent(`
         <div class="filter-and-content">
-            <div class="filters">
+            <form class="filters">
                 <div class="filter">
                     <div class="filter-label">მწარმოებელი:</div>
-                    <input type="text" id="filter-car-mark">
+                    <!-- <input type="text" id="filter-car-brand"> -->
+                    <select class="filter-dropdown" name="filter-brands" id="filter-car-brand">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                    </select>
                 </div>
     
                 <div class="filter">
@@ -52,7 +58,7 @@ class MainPage {
                         width="17px" height="17px">
                     <div>გაფილტრვა</div>
                 </div>
-            </div>
+            </form>
             
             <div id="content">
                 
@@ -117,7 +123,7 @@ class MainPage {
     
     static filterButtonClicked() {
         const filter = {
-            mark: DOMUtils.getValueById('filter-car-mark'),
+            brand: DOMUtils.getValueById('filter-car-brand'),
             model: DOMUtils.getValueById('filter-car-model'),
             startPrice: parseInt(DOMUtils.getValueById('filter-car-startPrice')),
             endPrice: parseInt(DOMUtils.getValueById('filter-car-endPrice')),
@@ -138,7 +144,7 @@ class MainPage {
         function executeFilter() {
             document.getElementById('filter-button').click();
         }
-        DOMUtils.bindEnterToElementById('filter-car-mark', executeFilter);
+        DOMUtils.bindEnterToElementById('filter-car-brand', executeFilter);
         DOMUtils.bindEnterToElementById('filter-car-model', executeFilter);
         DOMUtils.bindEnterToElementById('filter-car-startPrice', executeFilter);
         DOMUtils.bindEnterToElementById('filter-car-endPrice', executeFilter);

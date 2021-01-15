@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require('cors');
 const userRoute = require('./routes/user.route');
 const carRoute = require('./routes/car.route');
+const fixedDataRoute = require('./routes/fixedData.route');
 const path = require("path");
 const Car = require('./models/Car.model')
 
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use('/api/user', userRoute);
 app.use('/api/car', carRoute);
+app.use('/api/fixedData', fixedDataRoute);
 
 app.use('/api/*', (req, res, next) => {
     res.status(404).json({ message: 'Not Found' });
@@ -55,7 +57,7 @@ module.exports = app;
 
 // const car = new Car({
 //     username: 'beq0',
-//     mark: 'Mercedes',
+//     brand: 'Mercedes',
 //     model: 'E Class 2015',
 //     year: 2015,
 //     price: 190000,

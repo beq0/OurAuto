@@ -54,6 +54,24 @@ $car-img-height: 200px;
 	color: grey;
 }
 
+.filter-dropdown {
+	font-family: $car-info-font;
+	width: 100px;
+	border: 1px solid #e2ea74;
+	border-radius: 5px;
+	transition: 0.3s;
+	&:focus {
+		outline: none !important;
+		border-color: #a6ad48;
+    	box-shadow: 0 0 5px #a6ad48;
+	}
+	&:hover {
+		outline: none !important;
+		border-color: #a6ad48;
+    	box-shadow: 0 0 5px #a6ad48;
+	}
+}
+
 #filter-button {
 	cursor: pointer;
 	display: flex;

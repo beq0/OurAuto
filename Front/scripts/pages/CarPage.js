@@ -112,7 +112,7 @@ class CarPage {
                         </div>
     
                         <div class="ci-similar-car-model" onclick="CarPage.carClicked('${car._id}')">
-                            <span>${car.mark}</span>
+                            <span>${car.brand}</span>
                         </div>
                         
                         <div class="ci-similar-car-model" onclick="CarPage.carClicked('${car._id}')">

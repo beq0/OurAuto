@@ -15,7 +15,7 @@ class CarModal {
         
                     <div class="car-modal-field">
                         <div class="car-modal-field-label">მწარმოებელი:</div>
-                        <input id="car-modal-mark" class="car-modal-field-input" type="text" required
+                        <input id="car-modal-brand" class="car-modal-field-input" type="text" required
                         oninvalid="this.setCustomValidity('საჭიროა მწარმოებლის მითითება')" oninput="this.setCustomValidity('')">
                     </div>
         
@@ -84,7 +84,7 @@ class CarModal {
         };
         const car = {
             username: SessionUtils.getUsername(),
-            mark: DOMUtils.getValueById('car-modal-mark'),
+            brand: DOMUtils.getValueById('car-modal-brand'),
             model: DOMUtils.getValueById('car-modal-model'),
             year: DOMUtils.getValueById('car-modal-year'),
             mileage: DOMUtils.getValueById('car-modal-mileage'),

@@ -62,7 +62,7 @@ class UserPage {
                             </div>
 
                             <div class="u-car-model" onclick="CarPage.carClicked('${car._id}')">
-                                <span>${car.mark}</span>
+                                <span>${car.brand}</span>
                             </div>
         
                             <div class="u-car-model" onclick="CarPage.carClicked('${car._id}')">

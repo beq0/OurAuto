@@ -5,11 +5,19 @@ const carSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    mark: {
+    brand: {
         type: String,
         required: true
     },
     model: {
+        type: String,
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    sellType: {
         type: String,
         required: true
     },
@@ -36,6 +44,111 @@ const carSchema = mongoose.Schema({
     transmission: {
         type: String,
         required: true
+    },
+    fuelType: {
+        type: String,
+        required: true
+    },
+    customType: {
+        type: String,
+        required: true
+    },
+    wheel: {
+        type: String,
+        required: true
+    },
+    position: {
+        type: String,
+        required: true
+    },
+
+    // non-required
+    cylinders: {
+        type: Number
+    },
+    doors: {
+        type: Number
+    },
+    color: {
+        type: String
+    },
+    interiorColor: {
+        type: String
+    },
+    interiorMaterial: {
+        type: String
+    },
+    airbags: {
+        type: Number
+    },
+    ABS: {
+        type: Boolean
+    },
+    electronicWindows: {
+        type: Boolean
+    },
+    conditioner: {
+        type: Boolean
+    },
+    climateControl: {
+        type: Boolean
+    },
+    disks: {
+        type: Boolean
+    },
+    navigation: {
+        type: Boolean
+    },
+    centralLock: {
+        type: Boolean
+    },
+    upperWindow: { // ლუქი
+        type: Boolean
+    },
+    signalization: {
+        type: Boolean
+    },
+    bortComputer: {
+        type: Boolean
+    },
+    hidraulic: {
+        type: Boolean
+    },
+    antiSlide: {
+        type: Boolean
+    },
+    seetHeating: {
+        type: Boolean
+    },
+    parkingControl: {
+        type: Boolean
+    },
+    backViewCamera: {
+        type: Boolean
+    },
+    cruzeControl: {
+        type: Boolean
+    },
+    startStopSystem: {
+        type: Boolean
+    },
+    seatMemory: {
+        type: Boolean
+    },
+    fogHeadlights: {
+        type: Boolean
+    },
+    AUX: {
+        type: Boolean
+    },
+    BlueTooth: {
+        type: Boolean
+    },
+    multiWheel: {
+        type: Boolean
+    },
+    techView: {
+        type: Boolean
     }
 });
 

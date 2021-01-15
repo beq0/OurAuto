@@ -14,17 +14,25 @@ module.exports.addCar = (req, res) => {
         imageInfoToSave = FileUtils.getImageInfoToSave(image, username);
         imagePath = imageInfoToSave.fullPath;
     }
-    const newCar = new Car({
+    let newCarRequired = new Car({
         username: username,
-        mark: req.body.mark,
+        brand: req.body.brand,
         model: req.body.model,
+        category: req.body.category,
+        sellType: req.body.sellType,
         imagePath: imagePath,
         year: req.body.year,
         price: req.body.price,
         mileage: req.body.mileage,
         engine: req.body.engine,
-        transmission: req.body.transmission
+        transmission: req.body.transmission,
+        fuelType: req.body.fuelType,
+        customType: req.body.customType,
+        wheel: req.body.wheel,
+        position: req.body.position
     });
+
+    const newCar = fillNonRequiredInfo(newCarRequired, req);
 
     newCar.save().then(() => {
         if (image) {
@@ -38,6 +46,7 @@ module.exports.addCar = (req, res) => {
 }
 
 module.exports.editCar = async (req, res) => {
+    // maybe pass whole car object and wholly update it depending on id?
     const carId = req.body._id;
     if (!carId) {
         res.status(500).json({message: 'Id of the Car not provided to edit it!'});
@@ -57,7 +66,7 @@ module.exports.editCar = async (req, res) => {
         })
     })
     await oldCarPromise;
-    const mark = req.body.mark;
+    const brand = req.body.brand;
     const model = req.body.model;
     const image = req.body.image;
     let imagePath = getDefaultImagePath();
@@ -73,7 +82,7 @@ module.exports.editCar = async (req, res) => {
     const engine = req.body.engine;
     const transmission = req.body.transmission;
     let updatedCar = {}
-    if (mark) updatedCar['mark'] = mark;
+    if (brand) updatedCar['brand'] = brand;
     if (model) updatedCar['model'] = model;
     if (image) updatedCar['imagePath'] = imagePath;
     if (year || year === 0) updatedCar['year'] = year;
@@ -121,18 +130,26 @@ module.exports.getCars = (req, res) => {
 }
 
 module.exports.filterCars = (req, res) => {
-    const mark = req.body.mark;
+    const brand = req.body.brand;
     const model = req.body.model;
+    const category = req.body.category;
+    const sellType = req.body.sellType;
     const startPrice = req.body.startPrice;
     const endPrice = req.body.endPrice;
     const startYear = req.body.startYear;
     const endYear = req.body.endYear;
     const engine = req.body.engine;
     const transmission = req.body.transmission;
+    const fuelType = req.body.fuelType;
+    const customType = req.body.customType;
+    const wheel = req.body.wheel;
+    const position = req.body.position
 
     let carsForQuery = {}
-    if (mark) carsForQuery['mark'] = mark;
+    if (brand) carsForQuery['brand'] = brand;
     if (model) carsForQuery['model'] = model;
+    if (category) carsForQuery['category'] = category;
+    if (sellType) carsForQuery['sellType'] = sellType;
 
     if ((startPrice || startPrice === 0) || (endPrice || endPrice === 0)) carsForQuery['price'] = {};
     if (startPrice || startPrice === 0) carsForQuery['price']['$gte'] = startPrice;
@@ -144,6 +161,11 @@ module.exports.filterCars = (req, res) => {
 
     if (engine || engine === 0) carsForQuery['engine'] = engine;
     if (transmission && transmission !== 'ყველა') carsForQuery['transmission'] = transmission;
+
+    if (fuelType) carsForQuery['fuelType'] = fuelType;
+    if (customType) carsForQuery['customType'] = customType;
+    if (wheel) carsForQuery['wheel'] = wheel;
+    if (position) carsForQuery['position'] = position;
 
     Car.find(carsForQuery).then((cars) => {
         res.status(200).json(cars);
@@ -183,6 +205,74 @@ module.exports.getCarsForUser = (req, res) => {
     }).catch((err) => {
         res.status(500).json({message: `Error during finding Cars for user ${username}`});
     })
+}
+
+function fillNonRequiredInfo(car, req) {
+    const cylinders = req.body.cylinders;
+    const doors = req.body.doors;
+    const color = req.body.color;
+    const interiorColor = req.body.interiorColor;
+    const interiorMaterial = req.body.interiorMaterial;
+    const airbags = req.body.airbags;
+    const ABS = req.body.ABS;
+    const electronicWindows = req.body.electronicWindows;
+    const conditioner = req.body.conditioner;
+    const climateControl = req.body.climateControl;
+    const disks = req.body.disks;
+    const navigation = req.body.navigation;
+    const centralLock = req.body.centralLock;
+    const upperWindow = req.body.upperWindow;
+    const signalization = req.body.signalization;
+    const bortComputer = req.body.bortComputer;
+    const hidraulic = req.body.hidraulic;
+    const antiSlide = req.body.antiSlide;
+    const seetHeating = req.body.seetHeating;
+    const parkingControl = req.body.parkingControl;
+    const backViewCamera = req.body.backViewCamera;
+    const cruzeControl = req.body.cruzeControl;
+    const startStopSystem = req.body.startStopSystem;
+    const seatMemory = req.body.seatMemory;
+    const fogHeadlights = req.body.fogHeadlights;
+    const AUX = req.body.AUX;
+    const BlueTooth = req.body.BlueTooth;
+    const multiWheel = req.body.multiWheel;
+    const techView = req.body.techView;
+
+    if (!isNullOrUndefined(cylinders)) car['cylinders'] = cylinders;
+    if (!isNullOrUndefined(doors)) car['doors'] = doors;
+    if (!isNullOrUndefined(color)) car['color'] = color;
+    if (!isNullOrUndefined(interiorColor)) car['interiorColor'] = interiorColor;
+    if (!isNullOrUndefined(interiorMaterial)) car['interiorMaterial'] = interiorMaterial;
+    if (!isNullOrUndefined(airbags)) car['airbags'] = airbags;
+    if (!isNullOrUndefined(ABS)) car['ABS'] = ABS;
+    if (!isNullOrUndefined(electronicWindows)) car['electronicWindows'] = electronicWindows;
+    if (!isNullOrUndefined(conditioner)) car['conditioner'] = conditioner;
+    if (!isNullOrUndefined(climateControl)) car['climateControl'] = climateControl;
+    if (!isNullOrUndefined(disks)) car['disks'] = disks;
+    if (!isNullOrUndefined(navigation)) car['navigation'] = navigation;
+    if (!isNullOrUndefined(centralLock)) car['centralLock'] = centralLock;
+    if (!isNullOrUndefined(upperWindow)) car['upperWindow'] = upperWindow;
+    if (!isNullOrUndefined(signalization)) car['signalization'] = signalization;
+    if (!isNullOrUndefined(bortComputer)) car['bortComputer'] = bortComputer;
+    if (!isNullOrUndefined(hidraulic)) car['hidraulic'] = hidraulic;
+    if (!isNullOrUndefined(antiSlide)) car['antiSlide'] = antiSlide;
+    if (!isNullOrUndefined(seetHeating)) car['seetHeating'] = seetHeating;
+    if (!isNullOrUndefined(parkingControl)) car['parkingControl'] = parkingControl;
+    if (!isNullOrUndefined(backViewCamera)) car['backViewCamera'] = backViewCamera;
+    if (!isNullOrUndefined(cruzeControl)) car['cruzeControl'] = cruzeControl;
+    if (!isNullOrUndefined(startStopSystem)) car['startStopSystem'] = startStopSystem;
+    if (!isNullOrUndefined(seatMemory)) car['seatMemory'] = seatMemory;
+    if (!isNullOrUndefined(fogHeadlights)) car['fogHeadlights'] = fogHeadlights;
+    if (!isNullOrUndefined(AUX)) car['AUX'] = AUX;
+    if (!isNullOrUndefined(BlueTooth)) car['BlueTooth'] = BlueTooth;
+    if (!isNullOrUndefined(multiWheel)) car['multiWheel'] = multiWheel;
+    if (!isNullOrUndefined(techView)) car['techView'] = techView;
+
+    return car;
+}
+
+function isNullOrUndefined(obj) {
+    return obj === null || obj === undefined;
 }
 
 function getDefaultImagePath() {
