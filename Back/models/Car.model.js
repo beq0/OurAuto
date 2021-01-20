@@ -75,8 +75,8 @@ const carSchema = mongoose.Schema({
     interiorColor: {
         type: String
     },
-    interiorMaterial: {
-        type: String
+    leatherInterior: {
+        type: Boolean
     },
     airbags: {
         type: Number

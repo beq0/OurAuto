@@ -225,6 +225,14 @@ button {
 
 .content-separator {
 	display: none;
+	text-align: end;
+}
+
+#show-filter-button {
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
 }
 
 .filter-and-content {

@@ -68,7 +68,7 @@ class MainPage {
                 </div>
 
                 <div class="filter">
-                    <div class="filter-label">საწვავის ტიპი:</div>
+                    <div class="filter-label">საწვავი:</div>
                     <select class="filter-dropdown" name="filter-fuel-types" id="filter-car-fuel-type">
                         
                     </select>
@@ -110,7 +110,6 @@ class MainPage {
         this.bindEntersOnMainPage();
         Promise.all([
             fixedDataService.getBrands(),
-            fixedDataService.getBrandsWithModels(),
             fixedDataService.getSellTypes(),
             fixedDataService.getCategories(),
             fixedDataService.getTransmissions(),
@@ -120,18 +119,16 @@ class MainPage {
             fixedDataService.getPositions(),
         ]).then((fixedDatas) => {
             const Brands = fixedDatas[0];
-            const BrandsWithModels = fixedDatas[1];
-            const SellTypes = fixedDatas[2];
-            const Categories = fixedDatas[3];
-            const Transmissions = fixedDatas[4];
-            const FuelTypes = fixedDatas[5];
-            const CustomTypes = fixedDatas[6];
-            const Wheels = fixedDatas[7];
-            const Positions = fixedDatas[8];
+            const SellTypes = fixedDatas[1];
+            const Categories = fixedDatas[2];
+            const Transmissions = fixedDatas[3];
+            const FuelTypes = fixedDatas[4];
+            const CustomTypes = fixedDatas[5];
+            const Wheels = fixedDatas[6];
+            const Positions = fixedDatas[7];
             
             DOMUtils.addOptionsToSelectById('filter-car-brand', Brands);
             document.getElementById('filter-car-brand').onchange = () => {
-                // console.log(val);
                 const chosenBrand = DOMUtils.getValueById('filter-car-brand');
                 fixedDataService.getModelsForBrand(chosenBrand)
                     .then((models) => {
@@ -139,9 +136,8 @@ class MainPage {
                         DOMUtils.addOptionsToSelectById('filter-car-model', models);
                     })
                     .catch((err) => {
-
+                        DOMUtils.removeAllOptionsForSelectById('filter-car-model');
                     });
-                // console.log(chosenBrand);
             }
             DOMUtils.addOptionsToSelectById('filter-car-sell-type', SellTypes);
             DOMUtils.addOptionsToSelectById('filter-car-category', Categories);
@@ -180,25 +176,34 @@ class MainPage {
                         </div>
     
                         <div class="car-model" onclick="CarPage.carClicked('${car._id}')">
-                            <span>${car.model}</span>
+                            <div>${car.brand}</div>
+                            <div>${car.model}</div>
                         </div>
                     </div>
                     
                     <div class="car-general-info">
                         <div>
-                            წელი: <span>${car.year}</span>
+                            კატეგორია: ${car.category}
+                        </div>
+
+                        <div>
+                            წელი: ${car.year}
                         </div>
     
                         <div>
-                            ძრავი: <span>${car.engine}</span>
+                            ძრავი: ${car.engine}
                         </div>
                     
                         <div>
-                            ტრანსმისია: <span>${car.transmission}</span>
+                            ტრანსმისია: ${car.transmission}
+                        </div>
+
+                        <div>
+                            საწვავი: ${car.fuelType}
                         </div>
     
                         <div>
-                            გარბენი: <span>${NumberUtils.getNumWithCommas(car.mileage)}</span> კმ
+                            გარბენი: ${NumberUtils.getNumWithCommas(car.mileage)} კმ
                         </div>
                     </div>
                 </div>
@@ -239,5 +244,19 @@ class MainPage {
         DOMUtils.bindEnterToElementById('filter-car-endYear', executeFilter);
         DOMUtils.bindEnterToElementById('filter-car-engine', executeFilter);
         DOMUtils.bindEnterToElementById('filter-car-transmission', executeFilter);
+    }
+
+    static showFilterButtonClicked() {
+        let filtersElem = document.querySelector('.filters');
+        if (filtersShown) {
+            filtersElem.style['height'] = "0";
+            filtersElem.style['padding-top'] = "0";
+            filtersElem.style['padding-bottom'] = "0";
+        } else {
+            filtersElem.style['height'] = "auto";
+            filtersElem.style['padding-top'] = "10px";
+            filtersElem.style['padding-bottom'] = "15px";
+        }
+        filtersShown = !filtersShown;
     }
 }

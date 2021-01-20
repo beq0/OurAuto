@@ -25,7 +25,8 @@
 
 		<div class="header-info">
 			<div class="burger-menu">
-				<img id="burger-menu-img" src="./resources/burger.png" width="30px" height="30px" style="margin-left: 10px;" onclick="burgerMenuClicked()">
+				<img id="burger-menu-img" src="./resources/burger.png" width="30px" height="30px" style="margin-left: 10px;" onclick="burgerMenuClicked()"
+				title="მენიუ">
 			</div>
 
 			<div id="logo" onclick="logoClicked()">
@@ -43,7 +44,8 @@
 			</div>
 
 			<div class="avatar">
-				<img src="./resources/user.png"  width="30px" height="30px" style="margin-right: 10px;" onclick="UserComponent.avatarClicked()">
+				<img src="./resources/user.png"  width="30px" height="30px" style="margin-right: 10px;" onclick="UserComponent.avatarClicked()"
+				title="მომხმარებელი">
 			</div>
 		</div>
 
@@ -70,6 +72,8 @@
 		</div>
 
 		<div class="content-separator">
+			<img id="show-filter-button" src="./resources/filter.png" onclick="MainPage.showFilterButtonClicked()"
+			title="ფილტრაცია">
 		</div>
 
 		<div class="filter-and-content">

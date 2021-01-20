@@ -55,14 +55,21 @@
   box-shadow: 0 0 5px lightgray;
 }
 
+.car-main-info-text {
+  margin: 5px 0px;
+}
+
 .ci-info {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 550px;
-  font-style: italic;
   font-size: 15px;
   color: gray;
+}
+
+.car-info-text {
+  margin: 5px 0px;
 }
 
 #ci-car-info-user-separator {
@@ -151,6 +158,11 @@
 
   .ci-info {
     width: 350px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .ci-info {
+    font-size: 13px;
   }
 }
 @media only screen and (min-width: 600px) {
@@ -271,7 +283,7 @@
 }
 @media only screen and (max-width: 992px) {
   .ci-similar-cars {
-    margin-left: 20px;
+    margin-left: 10px;
   }
 }
 

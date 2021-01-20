@@ -10,6 +10,7 @@ const fixedDataService = FixedDataService.getInstance();
 window.onload = () => {
     MainPage.showMainPage();
     removePreload();
+    addShowFilterMediaListener();
 }
 
 function removePreload() {
@@ -21,7 +22,7 @@ function mainMenuItemClicked() {
     closeBurgerMenu();
 }
 
-let burgerMenuShown = false, avatarShown = false;
+let burgerMenuShown = false, avatarShown = false, filtersShown = true;
 
 function closeBurgerMenu() {
     if (burgerMenuShown) {
@@ -43,4 +44,29 @@ function burgerMenuClicked() {
         burgerMenu.style.left = '0px';
     }
     burgerMenuShown = !burgerMenuShown;
+}
+
+function addShowFilterMediaListener() {
+    const filtersMediaQuery = window.matchMedia('(min-width: 601px)');
+
+    function filtersMediaChanged(e) {
+        let filtersElem = document.querySelector('.filters');
+        if (ObjectUtils.isNotNullOrUndefined(filtersElem)) {
+            if (e.matches) {
+                filtersElem.style['height'] = "500px";
+                filtersElem.style['padding-top'] = "unset";
+                filtersElem.style['padding-bottom'] = "unset";
+            } else {
+                if (filtersShown) {
+                    filtersShown = false;
+                }
+                filtersElem.style['height'] = "0";
+                filtersElem.style['padding-top'] = "0";
+                filtersElem.style['padding-bottom'] = "0";
+            }
+        }
+    }
+
+    filtersMediaQuery.addEventListener('change', filtersMediaChanged);
+    filtersMediaChanged(filtersMediaQuery);
 }

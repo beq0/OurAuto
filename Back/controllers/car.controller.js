@@ -212,7 +212,7 @@ function fillNonRequiredInfo(car, req) {
     const doors = req.body.doors;
     const color = req.body.color;
     const interiorColor = req.body.interiorColor;
-    const interiorMaterial = req.body.interiorMaterial;
+    const leatherInterior = req.body.leatherInterior;
     const airbags = req.body.airbags;
     const ABS = req.body.ABS;
     const electronicWindows = req.body.electronicWindows;
@@ -242,7 +242,7 @@ function fillNonRequiredInfo(car, req) {
     if (!isNullOrUndefined(doors)) car['doors'] = doors;
     if (!isNullOrUndefined(color)) car['color'] = color;
     if (!isNullOrUndefined(interiorColor)) car['interiorColor'] = interiorColor;
-    if (!isNullOrUndefined(interiorMaterial)) car['interiorMaterial'] = interiorMaterial;
+    if (!isNullOrUndefined(leatherInterior)) car['leatherInterior'] = leatherInterior;
     if (!isNullOrUndefined(airbags)) car['airbags'] = airbags;
     if (!isNullOrUndefined(ABS)) car['ABS'] = ABS;
     if (!isNullOrUndefined(electronicWindows)) car['electronicWindows'] = electronicWindows;
