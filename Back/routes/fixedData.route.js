@@ -3,7 +3,9 @@ const FixedData = require('../controllers/fixeddata/fixedData.controller');
 
 router.get('/getBrands', FixedData.getBrands);
 
-router.get('/getModelsForBrand', FixedData.getModelsForBrand);
+router.get('/getModelsForBrand/:brand', FixedData.getModelsForBrand);
+
+router.get('/getBrandsWithModels', FixedData.getBrandsWithModels);
 
 router.get('/getSellTypes', FixedData.getSellTypes);
 

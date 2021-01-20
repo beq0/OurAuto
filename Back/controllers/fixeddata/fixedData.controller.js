@@ -7,12 +7,17 @@ module.exports.getBrands = (req, res) => {
 }
 
 module.exports.getModelsForBrand = (req, res) => {
-    if (!req.body.brand) {
+    if (!req.params.brand) {
         res.status(500).json({message: 'Brand not specified to find models'});
     }
-    const ModelsForBrand = FixedData.getModelsForBrand(req.body.brand);
+    const ModelsForBrand = FixedData.getModelsForBrand(req.params.brand);
     ModelsForBrand.sort();
     res.status(200).json(ModelsForBrand);
+}
+
+module.exports.getBrandsWithModels = (req, res) => {
+    const BrandsWithModels = FixedData.getBrandsWithModels();
+    res.status(200).json(BrandsWithModels);
 }
 
 module.exports.getSellTypes = (req, res) => {

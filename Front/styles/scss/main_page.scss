@@ -11,11 +11,12 @@ $car-img-height: 200px;
 	font-family: $car-info-font;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	flex-wrap: wrap;
+	justify-content: center;
 	align-items: center;
 	background: $header-background-color;
 	height: 500px;
-	width: 150px;
+	width: 235px;
 	
 	& > a {
 		text-decoration: none;
@@ -28,11 +29,12 @@ $car-img-height: 200px;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
+	margin: 10px 5px;
 	height: 40px;
 
 	& > input {
 		font-family: $car-info-font;
-		width: 100px;
+		width: 100px !important;
 		border: 1px solid #e2ea74;
 		border-radius: 5px;
 		transition: 0.3s;
@@ -56,7 +58,7 @@ $car-img-height: 200px;
 
 .filter-dropdown {
 	font-family: $car-info-font;
-	width: 100px;
+	width: 106px;
 	border: 1px solid #e2ea74;
 	border-radius: 5px;
 	transition: 0.3s;
@@ -187,5 +189,41 @@ $car-img-height: 200px;
 
 	.car-info {
 		margin-top: 10px;
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	.car-img {
+		width: 190px;
+		height: 130px;
+	}
+	
+	.car-general-info {
+		font-size: 13px;
+	}
+}
+
+@media only screen and (min-width: 650px) {
+	.car-img {
+		width: 200px;
+		height: 140px;
+	}
+
+	.car-general-info {
+		font-size: 15px;
+	}
+}
+
+@media only screen and (min-width: 680px) {
+	.car-img {
+		width: 250px;
+		height: 175px;
+	}
+}
+
+@media only screen and (min-width: 700px) {
+	.car-img {
+		width: $car-img-width;
+		height: $car-img-height;
 	}
 }

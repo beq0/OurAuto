@@ -5,6 +5,7 @@ function logoClicked() {
 let userLoggedIn = false;
 const userService = UserService.getInstance();
 const carService = CarService.getInstance();
+const fixedDataService = FixedDataService.getInstance();
 
 window.onload = () => {
     MainPage.showMainPage();

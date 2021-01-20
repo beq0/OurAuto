@@ -9,18 +9,30 @@ class MainPage {
             <form class="filters">
                 <div class="filter">
                     <div class="filter-label">მწარმოებელი:</div>
-                    <!-- <input type="text" id="filter-car-brand"> -->
                     <select class="filter-dropdown" name="filter-brands" id="filter-car-brand">
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
+                        
                     </select>
                 </div>
     
                 <div class="filter">
                     <div class="filter-label">მოდელი:</div>
-                    <input type="text" id="filter-car-model">
+                    <select class="filter-dropdown" name="filter-models" id="filter-car-model">
+                        
+                    </select>
+                </div>
+
+                <div class="filter">
+                    <div class="filter-label">გარიგების ტიპი:</div>
+                    <select class="filter-dropdown" name="filter-sell-types" id="filter-car-sell-type">
+                        
+                    </select>
+                </div>
+
+                <div class="filter">
+                    <div class="filter-label">კატეგორია:</div>
+                    <select class="filter-dropdown" name="filter-categories" id="filter-car-category">
+                        
+                    </select>
                 </div>
     
                 <div class="filter">
@@ -50,7 +62,37 @@ class MainPage {
             
                 <div class="filter">
                     <div class="filter-label">ტრანსმისია:</div>
-                    <input type="text" id="filter-car-transmission">
+                    <select class="filter-dropdown" name="filter-transmissions" id="filter-car-transmission">
+                        
+                    </select>
+                </div>
+
+                <div class="filter">
+                    <div class="filter-label">საწვავის ტიპი:</div>
+                    <select class="filter-dropdown" name="filter-fuel-types" id="filter-car-fuel-type">
+                        
+                    </select>
+                </div>
+
+                <div class="filter">
+                    <div class="filter-label">განბაჟება:</div>
+                    <select class="filter-dropdown" name="filter-custom-types" id="filter-car-custom-type">
+                        
+                    </select>
+                </div>
+
+                <div class="filter">
+                    <div class="filter-label">საჭე:</div>
+                    <select class="filter-dropdown" name="filter-wheels" id="filter-car-wheel">
+                        
+                    </select>
+                </div>
+
+                <div class="filter">
+                    <div class="filter-label">მდებარეობა:</div>
+                    <select class="filter-dropdown" name="filter-positions" id="filter-car-position">
+                        
+                    </select>
                 </div>
             
                 <div class="filter" id="filter-button">
@@ -66,6 +108,51 @@ class MainPage {
         </div>
         `);
         this.bindEntersOnMainPage();
+        Promise.all([
+            fixedDataService.getBrands(),
+            fixedDataService.getBrandsWithModels(),
+            fixedDataService.getSellTypes(),
+            fixedDataService.getCategories(),
+            fixedDataService.getTransmissions(),
+            fixedDataService.getFuelTypes(),
+            fixedDataService.getCustomTypes(),
+            fixedDataService.getWheels(),
+            fixedDataService.getPositions(),
+        ]).then((fixedDatas) => {
+            const Brands = fixedDatas[0];
+            const BrandsWithModels = fixedDatas[1];
+            const SellTypes = fixedDatas[2];
+            const Categories = fixedDatas[3];
+            const Transmissions = fixedDatas[4];
+            const FuelTypes = fixedDatas[5];
+            const CustomTypes = fixedDatas[6];
+            const Wheels = fixedDatas[7];
+            const Positions = fixedDatas[8];
+            
+            DOMUtils.addOptionsToSelectById('filter-car-brand', Brands);
+            document.getElementById('filter-car-brand').onchange = () => {
+                // console.log(val);
+                const chosenBrand = DOMUtils.getValueById('filter-car-brand');
+                fixedDataService.getModelsForBrand(chosenBrand)
+                    .then((models) => {
+                        DOMUtils.removeAllOptionsForSelectById('filter-car-model');
+                        DOMUtils.addOptionsToSelectById('filter-car-model', models);
+                    })
+                    .catch((err) => {
+
+                    });
+                // console.log(chosenBrand);
+            }
+            DOMUtils.addOptionsToSelectById('filter-car-sell-type', SellTypes);
+            DOMUtils.addOptionsToSelectById('filter-car-category', Categories);
+            DOMUtils.addOptionsToSelectById('filter-car-transmission', Transmissions);
+            DOMUtils.addOptionsToSelectById('filter-car-fuel-type', FuelTypes);
+            DOMUtils.addOptionsToSelectById('filter-car-custom-type', CustomTypes);
+            DOMUtils.addOptionsToSelectById('filter-car-wheel', Wheels);
+            DOMUtils.addOptionsToSelectById('filter-car-position', Positions);
+        }).catch((err) => {
+            console.error(err);
+        });
 
         DOMUtils.setOnClickById('filter-button', this.filterButtonClicked);
     

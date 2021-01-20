@@ -162,7 +162,11 @@ module.exports.getBrands = () => {
 }
 
 module.exports.getModelsForBrand = (brand) => {
-    return brands.filter(b => b.brand === brand).models;
+    return brands.filter(b => b.brand == brand)[0].models;
+}
+
+module.exports.getBrandsWithModels = () => {
+    return brands;
 }
 
 const sellTypes = [

@@ -43,4 +43,24 @@ class DOMUtils {
     static setOnClickByClass(className, func) {
         document.querySelector('.' + className).onclick = func;
     }
+
+    static addOptionToSelectById(id, option) {
+        let select = document.getElementById(id);
+        let optElem = document.createElement('option');
+        optElem.value = option; 
+        optElem.appendChild(document.createTextNode(option));
+        select.appendChild(optElem); 
+    }
+
+    static addOptionsToSelectById(id, options) {
+        options.forEach(option => this.addOptionToSelectById(id, option));
+    }
+
+    static removeAllOptionsForSelectById(id) {
+        let select = document.getElementById(id);
+        const len = select.options.length;
+        for (let i = 0; i < len; i++) {
+            select.removeChild(select.options[0]);
+        }
+    }
 }

@@ -2,11 +2,12 @@
   font-family: "Quicksand", sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   background: #fffcc2;
   height: 500px;
-  width: 150px;
+  width: 235px;
 }
 .filters > a {
   text-decoration: none;
@@ -18,11 +19,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  margin: 10px 5px;
   height: 40px;
 }
 .filter > input {
   font-family: "Quicksand", sans-serif;
-  width: 100px;
+  width: 100px !important;
   border: 1px solid #e2ea74;
   border-radius: 5px;
   transition: 0.3s;
@@ -45,7 +47,7 @@
 
 .filter-dropdown {
   font-family: "Quicksand", sans-serif;
-  width: 100px;
+  width: 106px;
   border: 1px solid #e2ea74;
   border-radius: 5px;
   transition: 0.3s;
@@ -176,6 +178,38 @@
 
   .car-info {
     margin-top: 10px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .car-img {
+    width: 190px;
+    height: 130px;
+  }
+
+  .car-general-info {
+    font-size: 13px;
+  }
+}
+@media only screen and (min-width: 650px) {
+  .car-img {
+    width: 200px;
+    height: 140px;
+  }
+
+  .car-general-info {
+    font-size: 15px;
+  }
+}
+@media only screen and (min-width: 680px) {
+  .car-img {
+    width: 250px;
+    height: 175px;
+  }
+}
+@media only screen and (min-width: 700px) {
+  .car-img {
+    width: 300px;
+    height: 200px;
   }
 }
 
