@@ -96,7 +96,7 @@ class MainPage {
                 </div>
             
                 <div class="filter" id="filter-button">
-                    <img src="C:/Users/AzRy/Desktop/OurAuto/Front/resources/search.jpg"
+                    <img src="./Front/resources/search.jpg"
                         width="17px" height="17px">
                     <div>გაფილტრვა</div>
                 </div>

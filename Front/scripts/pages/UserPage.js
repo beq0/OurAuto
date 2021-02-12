@@ -9,7 +9,7 @@ class UserPage {
         <div class="u-container">
             <div class="u-u">
                 <div class="u-img">
-                    <img src="resources/user.png">
+                    <img src="./Front/resources/user.png">
                 </div>
     
                 <div class="u-main-info">
@@ -34,12 +34,12 @@ class UserPage {
             : 
             `<div class="u-contact-buttons">
                 <div class="u-contact-button u-add-friend" onclick="UserPage.addFriendClicked()">
-                    <img src="resources/addFriend.jpg">
+                    <img src="./Front/resources/addFriend.jpg">
                     მეგობრებში დამატება
                 </div>
     
                 <div class="u-contact-button u-contact" onclick="UserPage.contactClicked()">
-                    <img src="resources/message.png">
+                    <img src="./Front/resources/message.png">
                     დაკავშირება
                 </div>
             </div>`}

@@ -1,16 +1,17 @@
 class Router {
     constructor() {
         this.routes = [
-            { path: "/", page: null },
-            { path: "/main", page: null },
-            { path: "/parts", page: null },
-            { path: "/ganbajeba", page: null },
-            { path: "/contact", page: null }
+            { path: "#", page: function(pars) {console.log('YESYES');} },
+            { path: "#main", page: function(pars) {console.log('main');} },
+            { path: "#parts", page: function(pars) {console.log('parts');} },
+            { path: "#ganbajeba", page: function(pars) {console.log('ganbajeba');} },
+            { path: "#contact", page: function(pars) {console.log('contact');} }
         ];
     }
 
     run() {
-        const route = this.getRoute(window.location.pathname);
+        let pathName = window.location.hash;
+        const route = this.getRoute(pathName);
         if (route) {
             const urlParams = new URLSearchParams(window.location.search);
             route.page(urlParams)
@@ -27,26 +28,17 @@ class Router {
     }
 
     getRoute(path) {
-        for (let route in this.routes) 
-            if (route.path === path)
+        for (let i = 0; i < this.routes.length; i++) {
+            const route = this.routes[i];
+            if (route['path'] === path) {
                 return route;
-        return {};
+            }
+        }
+            
+        return {path: "", page: function() {}};
     }
 
     routeExists(path) {
         return this.routes.filter(route => route.path === path).length !== 0;
     }
-}
-
-window.onload = () => {
-    let router = new Router();
-    window.addEventListener("popstate", router.run());
-    document.querySelectorAll('[router]').forEach(elem => {
-        elem.addEventListener('click', (event) => {
-            event.preventDefault();
-            window.history.pushState(null, null, event.target.route);
-            router.run();
-        })
-    })
-    router.run();
 }

@@ -10,7 +10,7 @@ class CarModal {
                 <form class="car-modal">
                     <div class="car-modal-close">
                         <div class="car-modal-label">მანქანის დამატება</div>
-                        <img id="car-modal-close-button" src="./resources/close-modal.png">
+                        <img id="car-modal-close-button" src="./Front/resources/close-modal.png">
                     </div>
         
                     <div class="car-modal-field">

@@ -8,9 +8,27 @@ const carService = CarService.getInstance();
 const fixedDataService = FixedDataService.getInstance();
 
 window.onload = () => {
+    setUpRouter();
     MainPage.showMainPage();
     removePreload();
     addShowFilterMediaListener();
+}
+
+function setUpRouter() {
+    let router = new Router();
+    window.addEventListener("popstate", () => {
+        console.log('popping state');
+        router.run();
+    });
+    document.querySelectorAll('[router]').forEach(elem => {
+        console.log("routing");
+        elem.addEventListener('click', (event) => {
+            // event.preventDefault();
+            // window.history.pushState(null, null, event.target.route);
+            // router.run();
+        })
+    })
+    // router.run();
 }
 
 function removePreload() {

@@ -9,7 +9,7 @@ const fixedDataRoute = require('./routes/fixedData.route');
 const path = require("path");
 const Car = require('./models/Car.model')
 
-mongoose.connect('mongodb://localhost/our_auto', {
+mongoose.connect('mongodb+srv://Beqa:g5YF2rPCfOZNQbPn@cluster0.zfwah.mongodb.net/our_auto?retryWrites=true&w=majority', {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true
