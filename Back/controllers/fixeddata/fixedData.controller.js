@@ -1,9 +1,12 @@
 const FixedData = require('./FixedData');
 
+const ALL_KEYWORD = "ყველა";
+
 module.exports.getBrands = (req, res) => {
     const Brands = FixedData.getBrands();
     Brands.sort();
-    res.status(200).json(Brands)
+    Brands.unshift(ALL_KEYWORD);
+    res.status(200).json(Brands);
 }
 
 module.exports.getModelsForBrand = (req, res) => {
@@ -11,7 +14,7 @@ module.exports.getModelsForBrand = (req, res) => {
         res.status(500).json({message: 'Brand not specified to find models'});
     }
     const ModelsForBrand = FixedData.getModelsForBrand(req.params.brand);
-    ModelsForBrand.sort();
+    // ModelsForBrand.sort();
     res.status(200).json(ModelsForBrand);
 }
 
@@ -53,5 +56,6 @@ module.exports.getWheels = (req, res) => {
 module.exports.getPositions = (req, res) => {
     const Positions = FixedData.getPositions();
     Positions.sort();
+    Positions.unshift(ALL_KEYWORD);
     res.status(200).json(Positions);
 }

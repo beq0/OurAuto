@@ -128,7 +128,8 @@ class MainPage {
             const Positions = fixedDatas[7];
             
             DOMUtils.addOptionsToSelectById('filter-car-brand', Brands);
-            document.getElementById('filter-car-brand').onchange = () => {
+            let carBrandFilter = document.getElementById('filter-car-brand');
+            carBrandFilter.onchange = () => {
                 const chosenBrand = DOMUtils.getValueById('filter-car-brand');
                 fixedDataService.getModelsForBrand(chosenBrand)
                     .then((models) => {

@@ -1,6 +1,8 @@
 const Car = require('../models/Car.model');
 const FileUtils = require('../utils/FileUtils');
 
+const ALL_KEYWORD = "ყველა"
+
 module.exports.addCar = (req, res) => {
     const username = req.body.username;
     if (!username) {
@@ -146,10 +148,10 @@ module.exports.filterCars = (req, res) => {
     const position = req.body.position
 
     let carsForQuery = {}
-    if (brand) carsForQuery['brand'] = brand;
-    if (model) carsForQuery['model'] = model;
-    if (category) carsForQuery['category'] = category;
-    if (sellType) carsForQuery['sellType'] = sellType;
+    if (brand && brand !== ALL_KEYWORD) carsForQuery['brand'] = brand;
+    if (model && model !== ALL_KEYWORD) carsForQuery['model'] = model;
+    if (category && category !== ALL_KEYWORD) carsForQuery['category'] = category;
+    if (sellType && sellType !== ALL_KEYWORD) carsForQuery['sellType'] = sellType;
 
     if ((startPrice || startPrice === 0) || (endPrice || endPrice === 0)) carsForQuery['price'] = {};
     if (startPrice || startPrice === 0) carsForQuery['price']['$gte'] = startPrice;
@@ -160,12 +162,14 @@ module.exports.filterCars = (req, res) => {
     if (endYear || endYear === 0) carsForQuery['year']['$lte'] = endYear;
 
     if (engine || engine === 0) carsForQuery['engine'] = engine;
-    if (transmission && transmission !== 'ყველა') carsForQuery['transmission'] = transmission;
+    if (transmission && transmission !== ALL_KEYWORD) carsForQuery['transmission'] = transmission;
 
-    if (fuelType) carsForQuery['fuelType'] = fuelType;
-    if (customType) carsForQuery['customType'] = customType;
-    if (wheel) carsForQuery['wheel'] = wheel;
-    if (position) carsForQuery['position'] = position;
+    if (fuelType && fuelType !== ALL_KEYWORD) carsForQuery['fuelType'] = fuelType;
+    if (customType && customType !== ALL_KEYWORD) carsForQuery['customType'] = customType;
+    if (wheel && wheel !== ALL_KEYWORD) carsForQuery['wheel'] = wheel;
+    if (position && position !== ALL_KEYWORD) carsForQuery['position'] = position;
+
+    console.log(carsForQuery);
 
     Car.find(carsForQuery).then((cars) => {
         res.status(200).json(cars);
