@@ -333,10 +333,10 @@ class CarModal {
     static carModalSubmited(e) {
         e.preventDefault();
         const image = DOMUtils.getFileById('car-modal-image');
-        if (ObjectUtils.isNotNullOrUndefined(image) && image.size > 2097152){
-            alert("გთხოვთ ატვირთოთ 2MB-ზე მცირე ზომის სურათი!");
-            return;
-        };
+        // if (ObjectUtils.isNotNullOrUndefined(image) && image.size > 2097152){
+        //     alert("გთხოვთ ატვირთოთ 2MB-ზე მცირე ზომის სურათი!");
+        //     return;
+        // };
         const car = {
             username: SessionUtils.getUsername(),
             brand: DOMUtils.getValueById('car-modal-brand'),

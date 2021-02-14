@@ -333,8 +333,8 @@ class CarModal {
     static carModalSubmited(e) {
         e.preventDefault();
         const image = DOMUtils.getFileById('car-modal-image');
-        if (ObjectUtils.isNotNullOrUndefined(image) && image.size > 2097152){
-            alert("გთხოვთ ატვირთოთ 2MB-ზე მცირე ზომის სურათი!");
+        if (ObjectUtils.isNotNullOrUndefined(image) && image.size > 40197152){
+            alert("გთხოვთ ატვირთოთ 40MB-ზე მცირე ზომის სურათი!");
             return;
         };
         const car = {
