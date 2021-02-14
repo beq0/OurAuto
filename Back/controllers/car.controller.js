@@ -281,5 +281,5 @@ function isNullOrUndefined(obj) {
 }
 
 function getDefaultImagePath() {
-    return '/our_auto/Back/public/car-images/default-car.png';
+    return '/car-images/default-car.png';
 }
