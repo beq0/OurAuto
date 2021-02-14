@@ -26,9 +26,9 @@ module.exports.saveImage = (imageBase64Data, fullPath) => {
             fs.mkdirSync(currPath);
         }
     }
-    fs.writeFileSync(fullPath, imageBase64Data, 'base64');
+    fs.writeFileSync("/OurAuto" + fullPath, imageBase64Data, 'base64');
 }
 
 module.exports.removeFile = (filePath) => {
-    fs.unlinkSync(filePath);
+    fs.unlinkSync("/OurAuto" + filePath);
 }
