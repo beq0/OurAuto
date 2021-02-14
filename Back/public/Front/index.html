@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>OurAuto</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./styles/index.css">
+	<link rel="stylesheet" href="./styles/main_page.css">
+	<link rel="preload" href="./styles/car_info.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="./styles/car_info.css"></noscript>
+	<link rel="preload" href="./styles/user.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="./styles/user.css"></noscript>
+	<link rel="preload" href="./styles/login.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="./styles/login.css"></noscript>
+	<link rel="preload" href="./styles/register.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="./styles/register.css"></noscript>
+	<link rel="preload" href="./styles/car_modal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="./styles/car_modal.css"></noscript>
+</head>
+
+<body class="preload">
+	<div class="main-container">
+		<div id="modal-container">
+		</div>
+
+		<div class="header-info">
+			<div class="burger-menu">
+				<img id="burger-menu-img" src="./resources/burger.png" width="30px" height="30px" style="margin-left: 10px;" onclick="burgerMenuClicked()"
+				title="მენიუ">
+			</div>
+
+			<a id="logo" href="#main">
+				OurAuto
+			</a>
+
+			<div id="user-info" class="user-info">
+				<a href="#login">
+					<button id="login-button">
+						შესვლა
+					</button>
+				</a>
+				
+				<a href="#register">
+					<button id="register-button">
+						რეგისტრაცია
+					</button>
+				</a>
+			</div>
+
+			<div class="avatar">
+				<img src="./resources/user.png"  width="30px" height="30px" style="margin-right: 10px;" onclick="UserComponent.avatarClicked()"
+				title="მომხმარებელი">
+			</div>
+		</div>
+
+		<div id="avatar-content" class="hidden-modal">
+			<a href="#login">
+				<button id="avatar-login-button" class="avatar-content-item">
+					შესვლა
+				</button>
+			</a>
+
+			<a href="#register">
+				<button id="avatar-register-button" class="avatar-content-item">
+					რეგისტრაცია
+				</button>
+			</a>
+		</div>
+
+		<div class="menu-items">
+			<a class="menu-item-content" href="#menu-main">
+				მთავარი
+			</a>
+		</div>
+
+		<div class="burger-menu-items hidden-modal">
+			<a id="last-burger-menu-item" href="#menu-main" class="burger-menu-item">
+				მთავარი
+			</a>
+		</div>
+
+		<div class="content-separator">
+			<img id="show-filter-button" src="./resources/filter.png" onclick="MainPage.showFilterButtonClicked()"
+			title="ფილტრაცია">
+		</div>
+
+		<div class="filter-and-content">
+			
+		</div>
+		
+	</div>
+
+<script src="./scripts/routing/Router.js"></script>
+<script src="./scripts/utils/SessionUtils.js"></script>
+<script src="./scripts/utils/DOMUtils.js"></script>
+<script src="./scripts/utils/ObjectUtils.js"></script>
+<script src="./scripts/utils/StringUtils.js"></script>
+<script src="./scripts/utils/NumberUtils.js"></script>
+<script src="./scripts/addresses.js"></script>
+<script src="./scripts/services/AjaxRequest.js"></script>
+<script src="./scripts/services/fixedData.service.js"></script>
+<script src="./scripts/services/user.service.js"></script>
+<script src="./scripts/services/car.service.js"></script>
+<script src="./scripts/components/UserComponent.js"></script>
+<script src="./scripts/pages/MainPage.js"></script>
+<script src="./scripts/pages/CarPage.js"></script>
+<script src="./scripts/pages/UserPage.js"></script>
+<script src="./scripts/pages/LoginPage.js"></script>
+<script src="./scripts/pages/RegisterPage.js"></script>
+<script src="./scripts/components/CarModal.js"></script>
+<script src="./scripts/index.js"></script>
+</body>
+
+</html>
