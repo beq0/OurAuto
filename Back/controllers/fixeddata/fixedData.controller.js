@@ -12,9 +12,10 @@ module.exports.getBrands = (req, res) => {
 module.exports.getModelsForBrand = (req, res) => {
     if (!req.params.brand) {
         res.status(500).json({message: 'Brand not specified to find models'});
+    } else if (req.params.brand === ALL_KEYWORD) {
+        res.status(200).json([]);
     }
     const ModelsForBrand = FixedData.getModelsForBrand(req.params.brand);
-    // ModelsForBrand.sort();
     res.status(200).json(ModelsForBrand);
 }
 

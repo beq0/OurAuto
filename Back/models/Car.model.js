@@ -23,7 +23,7 @@ const carSchema = mongoose.Schema({
     },
     imagePath: {
         type: String,
-        default: 'C:/Users/AzRy/Desktop/OurAuto/Front/resources/default-car.png'
+        default: '../../Front/resources/default-car.png'
     },
     year: {
         type: Number,

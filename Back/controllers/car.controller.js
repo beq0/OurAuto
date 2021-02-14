@@ -75,7 +75,6 @@ module.exports.editCar = async (req, res) => {
     let imageInfoToSave = {}
     if (image) {
         imageInfoToSave = FileUtils.getImageInfoToSave(image, username);
-        console.log(imageInfoToSave);
         imagePath = imageInfoToSave.fullPath;
     }
     const year = req.body.year;
@@ -169,9 +168,11 @@ module.exports.filterCars = (req, res) => {
     if (wheel && wheel !== ALL_KEYWORD) carsForQuery['wheel'] = wheel;
     if (position && position !== ALL_KEYWORD) carsForQuery['position'] = position;
 
-    console.log(carsForQuery);
-
     Car.find(carsForQuery).then((cars) => {
+        const carId = req.body._id;
+        if (carId) {
+            cars = cars.filter(c => c._id != carId);
+        }
         res.status(200).json(cars);
     }).catch((err) => {
         res.status(500).json({message: err});
