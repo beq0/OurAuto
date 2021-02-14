@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 module.exports.getImageInfoToSave = (baseImage, username) => {
-    const uploadPath = "/OurAuto";
+    const uploadPath = "";
     const localPath = `${uploadPath}/car-images/${username}/`;
 
     const ext = baseImage.substring(baseImage.indexOf("/") + 1, baseImage.indexOf(";base64"));

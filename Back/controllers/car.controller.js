@@ -281,5 +281,5 @@ function isNullOrUndefined(obj) {
 }
 
 function getDefaultImagePath() {
-    return 'C:/Users/AzRy/Desktop/OurAuto/Front/resources/default-car.png';
+    return '/car-images/default-car.png';
 }
